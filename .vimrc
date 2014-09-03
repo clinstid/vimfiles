@@ -41,6 +41,22 @@ Plugin 'tpope/vim-sleuth'
 " syntax checking
 Plugin 'scrooloose/syntastic'
 
+" most recently used files
+Plugin 'yegappan/mru'
+
+" Grep helper
+Plugin 'yegappan/grep'
+
+" Ruby support
+Plugin 'vim-ruby/vim-ruby'
+
+" Unite to open stuff
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/vimproc.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -51,8 +67,11 @@ set laststatus=2
 " Allows you to have multiple buffers open
 set hidden
 
-" Lines of code will not wrap to the next line
-set nowrap
+" Lines of code will wrap to the next line
+set wrap
+
+" Only wrap at linebreaks
+set linebreak
 
 " Make backspace behave like other editors
 set backspace=indent,eol,start
@@ -121,9 +140,7 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -197,3 +214,24 @@ filetype plugin on
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_yaml_checkers = ['jsyaml']
 " /syntastic options
+
+" most recently used
+map <leader>mr :MRU<cr>
+
+" copy to system clipboard
+vmap <C-c> "*y
+
+" toggle nerdtree
+map <leader>e :NERDTreeToggle<cr>
+
+" remove trailing whitespace
+map <leader>w :%s/\s\+$//e<cr>
+
+autocmd BufEnter * silent! lcd %:p:h
+
+" remote whitespace on save
+autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.rb :%s/\s\+$//e
+
+" look for a tags file
+set tags=tags;
