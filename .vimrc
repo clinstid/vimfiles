@@ -224,6 +224,8 @@ let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_yaml_checkers = ['jsyaml']
 " /syntastic options
 
+set encoding=utf-8
+
 " most recently used
 map <leader>mr :MRU<cr>
 
