@@ -60,6 +60,12 @@ Plugin 'Shougo/vimproc.vim'
 " markdown support
 Plugin 'tpope/vim-markdown'
 
+" source control
+Plugin 'vim-scripts/vcscommand.vim'
+
+" todo.txt plugin
+Plugin 'freitass/todo.txt-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
