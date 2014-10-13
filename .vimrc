@@ -35,9 +35,6 @@ Plugin 'bling/vim-airline'
 " jellybeans color scheme
 Plugin 'nanotech/jellybeans.vim'
 
-" detect indentation settings from file
-Plugin 'tpope/vim-sleuth'
-
 " syntax checking
 Plugin 'scrooloose/syntastic'
 
@@ -65,6 +62,8 @@ Plugin 'vim-scripts/vcscommand.vim'
 
 " todo.txt plugin
 Plugin 'freitass/todo.txt-vim'
+
+Plugin 'klen/python-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,12 +109,12 @@ set ignorecase
 set smartcase
 
 " Indent to correct location with tab
-set smarttab
+"set smarttab
+
 " Highlight search matches
-
 set hlsearch
-" Search while you enter the query, not after
 
+" Search while you enter the query, not after
 set incsearch
 
 " More undos
@@ -257,3 +256,11 @@ set tags=tags;
 " show tabs and trailing spaces
 set list
 set listchars=tab:»·,trail:·
+
+" pymode options
+
+" disable colorcolumn for pymode
+let g:pymode_options_colorcolumn = 0
+
+" disable folding
+let g:pymode_folding = 0
