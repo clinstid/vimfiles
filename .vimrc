@@ -250,6 +250,9 @@ autocmd BufEnter * silent! lcd %:p:h
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.rb :%s/\s\+$//e
 
+" mc files are mason
+au BufNewFile,BufRead *.mc set filetype=mason
+
 " look for a tags file
 set tags=tags;
 
@@ -264,3 +267,5 @@ let g:pymode_options_colorcolumn = 0
 
 " disable folding
 let g:pymode_folding = 0
+
+set spell
