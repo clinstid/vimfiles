@@ -244,6 +244,9 @@ map <leader>e :NERDTreeToggle<cr>
 " remove trailing whitespace
 map <leader>w :%s/\s\+$//e<cr>
 
+" clear hlsearch
+map <leader>q :set nohlsearch<cr>
+
 autocmd BufEnter * silent! lcd %:p:h
 
 " remote whitespace on save
@@ -269,3 +272,6 @@ let g:pymode_options_colorcolumn = 0
 let g:pymode_folding = 0
 
 set spell
+
+" faster redraw
+set ttyfast
