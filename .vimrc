@@ -65,6 +65,10 @@ Plugin 'freitass/todo.txt-vim'
 
 Plugin 'klen/python-mode'
 
+Plugin 'majutsushi/tagbar'
+
+Plugin 'mitsuhiko/vim-jinja'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -241,6 +245,9 @@ vmap <C-c> "*y
 " toggle nerdtree
 map <leader>e :NERDTreeToggle<cr>
 
+" Show hidden files in NERDTree
+let NERDTreeShowHidden=1
+
 " remove trailing whitespace
 map <leader>w :%s/\s\+$//e<cr>
 
@@ -275,3 +282,8 @@ set spell
 
 " faster redraw
 set ttyfast
+
+nmap <leader>sp :set paste<cr>
+nmap <leader>np :set nopaste<cr>
+
+set formatoptions=tcroqln
