@@ -69,6 +69,11 @@ Plugin 'majutsushi/tagbar'
 
 Plugin 'mitsuhiko/vim-jinja'
 
+" syntax support for ansible dialect of yaml
+Plugin 'chase/vim-ansible-yaml'
+
+Plugin 'stephpy/vim-yaml'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -188,7 +193,6 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " /neocomplete options
 
-let g:airline_powerline_fonts = 1
 let g:airline_theme = 'wombat'
 colorscheme jellybeans
 
