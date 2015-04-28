@@ -56,6 +56,7 @@ Plugin 'Shougo/vimproc.vim'
 
 " markdown support
 Plugin 'tpope/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
 
 " source control
 Plugin 'vim-scripts/vcscommand.vim'
@@ -73,6 +74,18 @@ Plugin 'mitsuhiko/vim-jinja'
 Plugin 'chase/vim-ansible-yaml'
 
 Plugin 'stephpy/vim-yaml'
+
+Plugin 'groenewege/vim-less'
+Plugin 'hail2u/vim-css3-syntax'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
+
+Plugin 'elzr/vim-json'
+
+Plugin 'rking/ag.vim'
+
+Plugin 'medihack/sh.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -214,12 +227,13 @@ if has("gui_running")
     set go=aip
     set mousemodel=popup_setpos
     set nomousehide
-    set vb
+    set noerrorbells visualbell t_vb=
+    autocmd GUIEnter * set visualbell t_vb=
     set guicursor=a:blinkon0
     if has("gui_macvim")
-        set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
+        set guifont=Ubuntu\ Mono:h16
     else
-        set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+        set guifont=Ubuntu\ Mono\ 11
     endif
 endif
 
@@ -252,6 +266,9 @@ map <leader>e :NERDTreeToggle<cr>
 " Show hidden files in NERDTree
 let NERDTreeShowHidden=1
 
+" Add a space after comments
+let NERDSpaceDelims=1
+
 " remove trailing whitespace
 map <leader>w :%s/\s\+$//e<cr>
 
@@ -263,16 +280,20 @@ autocmd BufEnter * silent! lcd %:p:h
 " remote whitespace on save
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufWritePre *.js :%s/\s\+$//e
 
 " mc files are mason
 au BufNewFile,BufRead *.mc set filetype=mason
+
+" ng-template files are html/angularjs
+au BufNewFile,BufRead *.ng-template set filetype=html
 
 " look for a tags file
 set tags=tags;
 
 " show tabs and trailing spaces
-set list
-set listchars=tab:»·,trail:·
+" set list
+" set listchars=tab:»·,trail:·
 
 " pymode options
 
@@ -282,12 +303,34 @@ let g:pymode_options_colorcolumn = 0
 " disable folding
 let g:pymode_folding = 0
 
+let g:pymode_options_max_line_length = 120
+let g:pymode_lint_ignore = "C901"
+let g:syntastic_python_flake8_args = "--max-line-length=120"
+
 set spell
 
 " faster redraw
+set lazyredraw
 set ttyfast
 
 nmap <leader>sp :set paste<cr>
 nmap <leader>np :set nopaste<cr>
 
 set formatoptions=tcroqln
+
+" javascript libraries
+let g:used_javascript_libs = 'angularjs,jquery'
+
+" return to last position in previously edited file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" Don't conceal quotes in JSON files
+let g:vim_json_syntax_conceal = 0
+
+" set cursorline
+
+vmap <C-c> "+y
+
+set completeopt=menuone
