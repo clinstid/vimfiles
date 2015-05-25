@@ -87,6 +87,10 @@ Plugin 'rking/ag.vim'
 
 Plugin 'medihack/sh.vim'
 
+Plugin 'altercation/vim-colors-solarized'
+
+" Plugin 'airblade/vim-gitgutter'
+
 Plugin 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
@@ -208,19 +212,23 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " /neocomplete options
 
-let g:airline_theme = 'wombat'
+let g:airline_theme = 'jellybeans'
 colorscheme jellybeans
 
 " Show a list and complete up the longest match
 set wildmode=list:longest
 
-set fillchars+=vert:\ 
+set fillchars="vert: "
+
+" Copy and paste to X11 (and maybe OS X?) clipboard
+" nmap <C-S-v> "+p
+" vmap <C-S-c> "+y
 
 " GUI specific options
 if has("gui_running")
     " window size
-    set columns=80
-    set lines=40
+    " set columns=80
+    " set lines=40
 
     " Guioptions 
     "   a: autoselect
@@ -333,6 +341,6 @@ let g:vim_json_syntax_conceal = 0
 
 " set cursorline
 
-vmap <C-c> "+y
+" vmap <C-c> "+y
 
 set completeopt=menuone
