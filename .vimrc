@@ -135,10 +135,10 @@ set ignorecase
 set smartcase
 
 " Indent to correct location with tab
-"set smarttab
+set smarttab
 
 " Highlight search matches
-set hlsearch
+" set hlsearch
 
 " Search while you enter the query, not after
 set incsearch
@@ -315,7 +315,9 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_lint_ignore = "C901"
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 
-set spell
+set nospell
+nmap <leader>so :set spell<cr>
+nmap <leader>sf :set nospell<cr>
 
 " faster redraw
 set lazyredraw
