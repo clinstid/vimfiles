@@ -33,7 +33,9 @@ Plugin 'vim-perl/vim-perl'
 Plugin 'bling/vim-airline'
 
 " jellybeans color scheme
-Plugin 'nanotech/jellybeans.vim'
+Plugin 'clinstid/jellybeans.vim'
+Plugin 'clinstid/twilight256.vim'
+Plugin 'clinstid/blackboard.vim'
 
 " syntax checking
 Plugin 'scrooloose/syntastic'
@@ -55,8 +57,10 @@ Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/vimproc.vim'
 
 " markdown support
-Plugin 'tpope/vim-markdown'
-Plugin 'jtratner/vim-flavored-markdown'
+" Plugin 'tpope/vim-markdown'
+" Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " source control
 Plugin 'vim-scripts/vcscommand.vim'
@@ -92,6 +96,8 @@ Plugin 'altercation/vim-colors-solarized'
 " Plugin 'airblade/vim-gitgutter'
 
 Plugin 'tomasr/molokai'
+
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -140,7 +146,7 @@ set smartcase
 set smarttab
 
 " Highlight search matches
-" set hlsearch
+set hlsearch
 
 " Search while you enter the query, not after
 set incsearch
@@ -213,6 +219,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " /neocomplete options
 
 let g:airline_theme = 'jellybeans'
+set background=dark
 colorscheme jellybeans
 
 " Show a list and complete up the longest match
@@ -230,7 +237,7 @@ if has("gui_running")
     " set columns=80
     " set lines=40
 
-    " Guioptions 
+    " Guioptions
     "   a: autoselect
     "   i: enable vim icon
     "   p: use pointer callbacks for X11 GUI, needed for some window managers
@@ -240,9 +247,12 @@ if has("gui_running")
     set noerrorbells visualbell t_vb=
     autocmd GUIEnter * set visualbell t_vb=
     set guicursor=a:blinkon0
+    " colorscheme solarized
+    " let g:airline_theme = 'solarized'
     if has("gui_macvim")
         set guifont=Ubuntu\ Mono:h16
     else
+        " set guifont=Ubuntu\ Mono\ 11
         set guifont=Ubuntu\ Mono\ 11
     endif
 endif
@@ -317,7 +327,7 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_lint_ignore = "C901"
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 
-set nospell
+set spell
 nmap <leader>so :set spell<cr>
 nmap <leader>sf :set nospell<cr>
 
@@ -327,6 +337,8 @@ set ttyfast
 
 nmap <leader>sp :set paste<cr>
 nmap <leader>np :set nopaste<cr>
+
+nmap <leader>ic a Copyright (c) 2015 Dynamic Networks, Inc.
 
 set formatoptions=tcroqln
 
@@ -346,3 +358,17 @@ let g:vim_json_syntax_conceal = 0
 " vmap <C-c> "+y
 
 set completeopt=menuone
+
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+
+" disable folding for markdown files
+let g:vim_markdown_folding_disabled=1
+
+" Markdown autoformatting
+nmap <leader>tf :TableFormat<cr>
+
+let g:indent_guides_enable_on_vim_startup = 1
