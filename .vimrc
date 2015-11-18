@@ -36,6 +36,7 @@ Plugin 'bling/vim-airline'
 Plugin 'clinstid/jellybeans.vim'
 Plugin 'clinstid/twilight256.vim'
 Plugin 'clinstid/blackboard.vim'
+Plugin 'clinstid/mirodark.git'
 
 " syntax checking
 Plugin 'scrooloose/syntastic'
@@ -218,10 +219,6 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " /neocomplete options
 
-let g:airline_theme = 'jellybeans'
-set background=dark
-colorscheme jellybeans
-
 " Show a list and complete up the longest match
 set wildmode=list:longest
 
@@ -255,7 +252,19 @@ if has("gui_running")
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Ubuntu\ Mono\ 11
     endif
+    let g:jellybeans_background_color='000000'
+else
+    " For a terminal we want no background so we can inherit whatever
+    " background the terminal is using.
+    let g:jellybeans_background_color='none'
+    let g:jellybeans_background_color_256='none'
 endif
+
+" Colorscheme mods
+let g:mirodark_disable_color_approximation=1
+let g:airline_theme = 'serene'
+set background=dark
+colorscheme jellybeans
 
 " show line numbers
 set number
@@ -371,4 +380,6 @@ let g:vim_markdown_folding_disabled=1
 " Markdown autoformatting
 nmap <leader>tf :TableFormat<cr>
 
-let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_enable_on_vim_startup = 1
+nmap <leader>i :IndentGuidesToggle<cr>
+nmap <leader>p :echo expand('%:p')<cr>
