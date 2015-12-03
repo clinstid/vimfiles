@@ -37,6 +37,7 @@ Plugin 'clinstid/jellybeans.vim'
 Plugin 'clinstid/twilight256.vim'
 Plugin 'clinstid/blackboard.vim'
 Plugin 'clinstid/mirodark.git'
+Plugin 'clinstid/vim-twilight'
 
 " syntax checking
 Plugin 'scrooloose/syntastic'
@@ -70,6 +71,7 @@ Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'freitass/todo.txt-vim'
 
 Plugin 'klen/python-mode'
+" Plugin 'python-rope/ropevim'
 
 Plugin 'majutsushi/tagbar'
 
@@ -244,27 +246,31 @@ if has("gui_running")
     set noerrorbells visualbell t_vb=
     autocmd GUIEnter * set visualbell t_vb=
     set guicursor=a:blinkon0
-    " colorscheme solarized
-    " let g:airline_theme = 'solarized'
+    set background=light
+    colorscheme solarized
+    let g:airline_theme = 'solarized'
     if has("gui_macvim")
         set guifont=Ubuntu\ Mono:h16
     else
         " set guifont=Ubuntu\ Mono\ 11
-        set guifont=Ubuntu\ Mono\ 11
+        set guifont=Hack\ 9
     endif
     let g:jellybeans_background_color='000000'
 else
+    " Colorscheme mods
     " For a terminal we want no background so we can inherit whatever
     " background the terminal is using.
     let g:jellybeans_background_color='none'
     let g:jellybeans_background_color_256='none'
+    let g:mirodark_disable_color_approximation=1
+    " let g:airline_theme = 'serene'
+    " set background=dark
+    " colorscheme jellybeans
+    let g:airline_theme = 'solarized'
+    set background=dark
+    colorscheme solarized
 endif
 
-" Colorscheme mods
-let g:mirodark_disable_color_approximation=1
-let g:airline_theme = 'serene'
-set background=dark
-colorscheme jellybeans
 
 " show line numbers
 set number
@@ -336,7 +342,7 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_lint_ignore = "C901"
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 
-set spell
+" set spell
 nmap <leader>so :set spell<cr>
 nmap <leader>sf :set nospell<cr>
 
@@ -383,3 +389,5 @@ nmap <leader>tf :TableFormat<cr>
 " let g:indent_guides_enable_on_vim_startup = 1
 nmap <leader>i :IndentGuidesToggle<cr>
 nmap <leader>p :echo expand('%:p')<cr>
+
+let g:pymode_rope_complete_on_dot = 0
