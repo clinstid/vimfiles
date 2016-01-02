@@ -247,8 +247,6 @@ if has("gui_running")
     autocmd GUIEnter * set visualbell t_vb=
     set guicursor=a:blinkon0
     set background=light
-    colorscheme solarized
-    let g:airline_theme = 'solarized'
     if has("gui_macvim")
         set guifont=Ubuntu\ Mono:h16
     else
@@ -256,6 +254,9 @@ if has("gui_running")
         set guifont=Hack\ 9
     endif
     let g:jellybeans_background_color='000000'
+    let g:airline_theme = 'serene'
+    set background=dark
+    colorscheme jellybeans
 else
     " Colorscheme mods
     " For a terminal we want no background so we can inherit whatever
@@ -263,12 +264,9 @@ else
     let g:jellybeans_background_color='none'
     let g:jellybeans_background_color_256='none'
     let g:mirodark_disable_color_approximation=1
-    " let g:airline_theme = 'serene'
-    " set background=dark
-    " colorscheme jellybeans
-    let g:airline_theme = 'solarized'
+    let g:airline_theme = 'serene'
     set background=dark
-    colorscheme solarized
+    colorscheme jellybeans
 endif
 
 
