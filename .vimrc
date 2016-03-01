@@ -30,7 +30,8 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-perl/vim-perl'
 
 " airline statusline
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " jellybeans color scheme
 Plugin 'clinstid/jellybeans.vim'
@@ -70,8 +71,10 @@ Plugin 'vim-scripts/vcscommand.vim'
 " todo.txt plugin
 Plugin 'freitass/todo.txt-vim'
 
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 " Plugin 'python-rope/ropevim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'hynek/vim-python-pep8-indent'
 
 Plugin 'majutsushi/tagbar'
 
@@ -248,7 +251,7 @@ if has("gui_running")
     set guicursor=a:blinkon0
     set background=light
     if has("gui_macvim")
-        set guifont=Ubuntu\ Mono:h16
+        set guifont=Hack:h12
     else
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Hack\ 9
@@ -271,7 +274,7 @@ endif
 
 
 " show line numbers
-set number
+" set number
 
 " set title in xterm
 set title
@@ -351,7 +354,7 @@ set ttyfast
 nmap <leader>sp :set paste<cr>
 nmap <leader>np :set nopaste<cr>
 
-nmap <leader>ic a Copyright (c) 2015 Dynamic Networks, Inc.
+nmap <leader>ic a Copyright (c) 2016 Dynamic Networks, Inc.
 
 set formatoptions=tcroqln
 
@@ -389,3 +392,10 @@ nmap <leader>i :IndentGuidesToggle<cr>
 nmap <leader>p :echo expand('%:p')<cr>
 
 let g:pymode_rope_complete_on_dot = 0
+let python_highlight_all = 1
+
+set conceallevel=1
+
+set showbreak=>
+
+let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
