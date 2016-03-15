@@ -35,10 +35,8 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " jellybeans color scheme
 Plugin 'clinstid/jellybeans.vim'
-Plugin 'clinstid/twilight256.vim'
-Plugin 'clinstid/blackboard.vim'
-Plugin 'clinstid/mirodark.git'
-Plugin 'clinstid/vim-twilight'
+Plugin 'clinstid/eink.vim'
+Plugin 'clinstid/minimal.vim'
 
 " syntax checking
 Plugin 'scrooloose/syntastic'
@@ -53,30 +51,30 @@ Plugin 'yegappan/grep'
 Plugin 'vim-ruby/vim-ruby'
 
 " Unite to open stuff
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'Shougo/vimproc.vim'
+" Plugin 'Shougo/unite.vim'
+" Plugin 'Shougo/neomru.vim'
+" Plugin 'Shougo/vimshell.vim'
+" Plugin 'Shougo/vimfiler.vim'
+" Plugin 'Shougo/vimproc.vim'
 
 " markdown support
 " Plugin 'tpope/vim-markdown'
 " Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'godlygeek/tabular'
+" Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
 " source control
-Plugin 'vim-scripts/vcscommand.vim'
+" Plugin 'vim-scripts/vcscommand.vim'
 
 " todo.txt plugin
-Plugin 'freitass/todo.txt-vim'
+" Plugin 'freitass/todo.txt-vim'
 
 " Plugin 'klen/python-mode'
 " Plugin 'python-rope/ropevim'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'hynek/vim-python-pep8-indent'
 
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 
 Plugin 'mitsuhiko/vim-jinja'
 
@@ -97,11 +95,7 @@ Plugin 'rking/ag.vim'
 
 Plugin 'medihack/sh.vim'
 
-Plugin 'altercation/vim-colors-solarized'
-
 " Plugin 'airblade/vim-gitgutter'
-
-Plugin 'tomasr/molokai'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 
@@ -227,7 +221,6 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " Show a list and complete up the longest match
 set wildmode=list:longest
 
-set fillchars="vert: "
 
 " Copy and paste to X11 (and maybe OS X?) clipboard
 " nmap <C-S-v> "+p
@@ -259,7 +252,7 @@ if has("gui_running")
     let g:jellybeans_background_color='000000'
     let g:airline_theme = 'serene'
     set background=dark
-    colorscheme jellybeans
+    colorscheme minimal
 else
     " Colorscheme mods
     " For a terminal we want no background so we can inherit whatever
@@ -269,12 +262,12 @@ else
     let g:mirodark_disable_color_approximation=1
     let g:airline_theme = 'serene'
     set background=dark
-    colorscheme jellybeans
+    colorscheme minimal
 endif
 
 
 " show line numbers
-" set number
+set number
 
 " set title in xterm
 set title
@@ -343,7 +336,7 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_lint_ignore = "C901"
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 
-" set spell
+set spell
 nmap <leader>so :set spell<cr>
 nmap <leader>sf :set nospell<cr>
 
@@ -394,8 +387,14 @@ nmap <leader>p :echo expand('%:p')<cr>
 let g:pymode_rope_complete_on_dot = 0
 let python_highlight_all = 1
 
-set conceallevel=1
+set conceallevel=0
 
 set showbreak=>
 
 let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+
+set fillchars=vert:\  
+
+set statusline=%q%F%(\ %r%)%(\ %m%)%(\ %{fugitive#statusline()}%)%=%y\ %l,%-02c
+
+nnoremap <BS> :noh<CR><BS>
