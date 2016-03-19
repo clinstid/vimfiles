@@ -244,7 +244,7 @@ if has("gui_running")
     set guicursor=a:blinkon0
     set background=light
     if has("gui_macvim")
-        set guifont=Hack:h12
+        set guifont=Hack\ Regular:h12
     else
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Hack\ 9
@@ -347,7 +347,8 @@ set ttyfast
 nmap <leader>sp :set paste<cr>
 nmap <leader>np :set nopaste<cr>
 
-nmap <leader>ic a Copyright (c) 2016 Dynamic Networks, Inc.
+nmap <leader>ic a Copyright (c) 2016 Dynamic Networks, Inc.
+
 
 set formatoptions=tcroqln
 
