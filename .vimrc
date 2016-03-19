@@ -348,7 +348,6 @@ nmap <leader>sp :set paste<cr>
 nmap <leader>np :set nopaste<cr>
 
 nmap <leader>ic a Copyright (c) 2016 Dynamic Networks, Inc.
-
 
 set formatoptions=tcroqln
 
