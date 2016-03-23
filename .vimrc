@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 
 " completion
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Shougo/neocomplete.vim'
 
 " Fuzzy file finding
 Plugin 'https://github.com/kien/ctrlp.vim'
@@ -62,6 +62,7 @@ Plugin 'vim-ruby/vim-ruby'
 " Plugin 'jtratner/vim-flavored-markdown'
 " Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'ervandew/supertab'
 
 " source control
 " Plugin 'vim-scripts/vcscommand.vim'
@@ -71,7 +72,7 @@ Plugin 'plasticboy/vim-markdown'
 
 " Plugin 'klen/python-mode'
 " Plugin 'python-rope/ropevim'
-" Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'hynek/vim-python-pep8-indent'
 
 " Plugin 'majutsushi/tagbar'
@@ -168,35 +169,6 @@ set t_Co=256
 
 " Enable mouse for all modes
 set mouse=a
-
-" necomplete options
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -336,7 +308,7 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_lint_ignore = "C901"
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 
-set spell
+set nospell
 nmap <leader>so :set spell<cr>
 nmap <leader>sf :set nospell<cr>
 
@@ -388,6 +360,7 @@ let g:pymode_rope_complete_on_dot = 0
 let python_highlight_all = 1
 
 set conceallevel=0
+let g:vim_markdown_conceal = 0
 
 set showbreak=>
 
@@ -395,6 +368,10 @@ let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#par
 
 set fillchars=vert:\  
 
-set statusline=%q%F%(\ %r%)%(\ %m%)%(\ %{fugitive#statusline()}%)%=%y\ %l,%-02c
+" set statusline=%q%F%(\ %r%)%(\ %m%)%(\ %{fugitive#statusline()}%)%=%y\ %l,%-02c
 
 nnoremap <BS> :noh<CR><BS>
+
+" jedi configuration
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#popup_select_first = 0
