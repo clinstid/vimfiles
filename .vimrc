@@ -363,7 +363,7 @@ let python_highlight_all = 1
 set conceallevel=0
 let g:vim_markdown_conceal = 0
 
-set showbreak=>
+set showbreak=┗
 
 let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 
