@@ -100,6 +100,8 @@ Plugin 'medihack/sh.vim'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 
+Plugin 'clinstid/vim-behave'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -214,7 +216,6 @@ if has("gui_running")
     set noerrorbells visualbell t_vb=
     autocmd GUIEnter * set visualbell t_vb=
     set guicursor=a:blinkon0
-    set background=light
     if has("gui_macvim")
         set guifont=Hack\ Regular:h12
     else
