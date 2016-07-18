@@ -12,10 +12,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 
 " completion
-" Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplete.vim'
 
 " Fuzzy file finding
-Plugin 'https://github.com/kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " comment helper
 Plugin 'scrooloose/nerdcommenter'
@@ -51,16 +51,16 @@ Plugin 'yegappan/grep'
 Plugin 'vim-ruby/vim-ruby'
 
 " Unite to open stuff
-" Plugin 'Shougo/unite.vim'
-" Plugin 'Shougo/neomru.vim'
-" Plugin 'Shougo/vimshell.vim'
-" Plugin 'Shougo/vimfiler.vim'
-" Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/vimproc.vim'
 
 " markdown support
 " Plugin 'tpope/vim-markdown'
 " Plugin 'jtratner/vim-flavored-markdown'
-" Plugin 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ervandew/supertab'
 
@@ -75,7 +75,7 @@ Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'hynek/vim-python-pep8-indent'
 
-" Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 
 Plugin 'mitsuhiko/vim-jinja'
 
@@ -101,6 +101,12 @@ Plugin 'medihack/sh.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'clinstid/vim-behave'
+
+Plugin 'vim-scripts/utl.vim'
+Plugin 'mattn/calendar-vim'
+Plugin 'jceb/vim-orgmode'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'tpope/vim-speeddating'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -179,22 +185,32 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+autocmd FileType markdown setlocal spell
+
 " Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+  " let g:neocomplete#sources#omni#input_patterns = {}
+" endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " /neocomplete options
 
-" Show a list and complete up the longest match
-set wildmode=list:longest
+let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#auto_completion_start_length = 2
 
+" Enable tab to use neocomplete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Show a list and complete up to the longest match
+set wildmenu
+set wildmode=longest,list,full
 
 " Copy and paste to X11 (and maybe OS X?) clipboard
 " nmap <C-S-v> "+p
@@ -281,6 +297,7 @@ autocmd BufEnter * silent! lcd %:p:h
 
 " remote whitespace on save
 autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.md :%s/\s\+$//e
 autocmd BufWritePre *.rb :%s/\s\+$//e
 autocmd BufWritePre *.js :%s/\s\+$//e
 
@@ -339,7 +356,7 @@ let g:vim_json_syntax_conceal = 0
 
 " vmap <C-c> "+y
 
-set completeopt=menuone
+set completeopt=menuone,longest
 
 if has("mouse_sgr")
     set ttymouse=sgr
@@ -363,8 +380,6 @@ let python_highlight_all = 1
 set conceallevel=0
 let g:vim_markdown_conceal = 0
 
-set showbreak=┗
-
 let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 
 set fillchars=vert:\  
@@ -374,5 +389,18 @@ set fillchars=vert:\
 nnoremap <BS> :noh<CR><BS>
 
 " jedi configuration
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#auto_vim_configuration = 0
+
+" \tl - Toggle taglist
+nnoremap <leader>tl :TlistToggle<cr>
+
+set scrolloff=1
+set sidescrolloff=5
+set display+=lastline
+
+" Make sure ctrlp shows hidden files
+let g:ctrlp_show_hidden = 1
+
+set history=1000
