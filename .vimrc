@@ -29,14 +29,14 @@ Plugin 'jlanzarotta/bufexplorer'
 " Perl support
 Plugin 'vim-perl/vim-perl'
 
-" airline statusline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
 " jellybeans color scheme
 Plugin 'clinstid/jellybeans.vim'
 Plugin 'clinstid/eink.vim'
 Plugin 'clinstid/minimal.vim'
+
+Plugin 'rakr/vim-one'
+Plugin 'tomasr/molokai'
+Plugin 'tyrannicaltoucan/vim-deep-space'
 
 " syntax checking
 Plugin 'scrooloose/syntastic'
@@ -108,12 +108,17 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'tpope/vim-speeddating'
 
+Plugin 'tenable/vim-nasl'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" always show statusline
+" always show status bar
 set laststatus=2
+
+" show stats in the command line
+set ruler
 
 " Allows you to have multiple buffers open
 set hidden
@@ -216,6 +221,22 @@ set wildmode=longest,list,full
 " nmap <C-S-v> "+p
 " vmap <C-S-c> "+y
 
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+    if (has("nvim"))
+	"For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    endif
+    "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+    "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+    " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+    if (has("termguicolors"))
+	set termguicolors
+    endif
+endif
+
 " GUI specific options
 if has("gui_running")
     " window size
@@ -238,18 +259,9 @@ if has("gui_running")
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Hack\ 9
     endif
-    let g:jellybeans_background_color='000000'
-    let g:airline_theme = 'serene'
     set background=dark
     colorscheme minimal
 else
-    " Colorscheme mods
-    " For a terminal we want no background so we can inherit whatever
-    " background the terminal is using.
-    let g:jellybeans_background_color='none'
-    let g:jellybeans_background_color_256='none'
-    let g:mirodark_disable_color_approximation=1
-    let g:airline_theme = 'serene'
     set background=dark
     colorscheme minimal
 endif
@@ -356,7 +368,7 @@ let g:vim_json_syntax_conceal = 0
 
 " vmap <C-c> "+y
 
-set completeopt=menuone,longest
+set completeopt=longest,menuone
 
 if has("mouse_sgr")
     set ttymouse=sgr
@@ -380,11 +392,48 @@ let python_highlight_all = 1
 set conceallevel=0
 let g:vim_markdown_conceal = 0
 
-let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
-
 set fillchars=vert:\  
 
-" set statusline=%q%F%(\ %r%)%(\ %m%)%(\ %{fugitive#statusline()}%)%=%y\ %l,%-02c
+function! GetFullModeName(mode)
+    if a:mode ==? 'i'
+        return 'INSERT'
+    elseif a:mode ==? 'n'
+        return 'NORMAL'
+    elseif a:mode ==? 'v'
+        return 'VISUAL'
+    endif
+    return 'UNKNOWN'
+endfunction
+
+" Status Line
+hi User1 cterm=NONE ctermbg=233 ctermfg=202 gui=NONE guibg=#121212 guifg=#ff5f00
+hi User2 cterm=NONE ctermbg=233 ctermfg=240 gui=NONE guibg=#121212 guifg=#585858
+hi User3 cterm=NONE ctermbg=232 ctermfg=233 gui=NONE guibg=#121212 guifg=#ffaf00
+
+if has('statusline')
+    set statusline=
+    set statusline+=%1*                               " <-- Orange
+    set statusline+=[%{toupper(mode())}]\             " Show the current mode
+    set statusline+=%q                                " Quickfix List, Location List, or empty
+    set statusline+=%*                                " <-- Clear highlighting
+    set statusline+=%<%F\                             " Fuil path to the file in the buffer
+    set statusline+=%1*                               " <-- Orange
+    set statusline+=%m\                               " Modified flag (hide if empty)
+    set statusline+=%2*                               " <-- Gray/italic
+    set statusline+=%{fugitive#statusline()}          " Git status (hide if empty)
+    set statusline+=%*                                " <-- Clear highlighting
+    set statusline+=%=                                " Left ------------------------ Right
+    set statusline+=%*                                " <-- Clear highlighting
+    set statusline+=%3*                               " <-- Yellow
+    set statusline+=%{SyntasticStatuslineFlag()}\     " Syntastic status
+    set statusline+=%2*                               " <-- Gray/italic
+    set statusline+=%r                                " Read-only flag (hide if empty)
+    set statusline+=%y                                " Type of file
+    set statusline+=\                                 " One space
+    set statusline+=%p%%\                             " Percentage through file by line
+    set statusline+=%l,%c                             " Line, Column
+    set statusline+=%*                                " <-- Clear highlighting
+endif
 
 nnoremap <BS> :noh<CR><BS>
 
@@ -404,3 +453,5 @@ set display+=lastline
 let g:ctrlp_show_hidden = 1
 
 set history=1000
+
+set noshowmode
