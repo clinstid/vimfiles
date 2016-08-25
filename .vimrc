@@ -29,14 +29,7 @@ Plugin 'jlanzarotta/bufexplorer'
 " Perl support
 Plugin 'vim-perl/vim-perl'
 
-" jellybeans color scheme
 Plugin 'clinstid/jellybeans.vim'
-Plugin 'clinstid/eink.vim'
-Plugin 'clinstid/minimal.vim'
-
-Plugin 'rakr/vim-one'
-Plugin 'tomasr/molokai'
-Plugin 'tyrannicaltoucan/vim-deep-space'
 
 " syntax checking
 Plugin 'scrooloose/syntastic'
@@ -50,28 +43,10 @@ Plugin 'yegappan/grep'
 " Ruby support
 Plugin 'vim-ruby/vim-ruby'
 
-" Unite to open stuff
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'Shougo/vimproc.vim'
-
 " markdown support
-" Plugin 'tpope/vim-markdown'
-" Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'ervandew/supertab'
 
-" source control
-" Plugin 'vim-scripts/vcscommand.vim'
-
-" todo.txt plugin
-" Plugin 'freitass/todo.txt-vim'
-
-" Plugin 'klen/python-mode'
-" Plugin 'python-rope/ropevim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'hynek/vim-python-pep8-indent'
 
@@ -96,19 +71,12 @@ Plugin 'rking/ag.vim'
 
 Plugin 'medihack/sh.vim'
 
-" Plugin 'airblade/vim-gitgutter'
-
-Plugin 'nathanaelkane/vim-indent-guides'
-
 Plugin 'clinstid/vim-behave'
 
-Plugin 'vim-scripts/utl.vim'
-Plugin 'mattn/calendar-vim'
-Plugin 'jceb/vim-orgmode'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'tpope/vim-speeddating'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
-Plugin 'tenable/vim-nasl'
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -192,19 +160,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 autocmd FileType markdown setlocal spell
 
-" Enable heavy omni completion.
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-  " let g:neocomplete#sources#omni#input_patterns = {}
-" endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-" /neocomplete options
-
 let g:neocomplete#enable_at_startup = 1
 " let g:neocomplete#enable_auto_select = 1
 let g:neocomplete#enable_smart_case = 1
@@ -260,10 +215,10 @@ if has("gui_running")
         set guifont=Hack\ 9
     endif
     set background=dark
-    colorscheme minimal
+    colorscheme jellybeans
 else
     set background=dark
-    colorscheme minimal
+    colorscheme jellybeans
 endif
 
 
@@ -406,34 +361,35 @@ function! GetFullModeName(mode)
 endfunction
 
 " Status Line
-hi User1 cterm=NONE ctermbg=233 ctermfg=202 gui=NONE guibg=#121212 guifg=#ff5f00
-hi User2 cterm=NONE ctermbg=233 ctermfg=240 gui=NONE guibg=#121212 guifg=#585858
-hi User3 cterm=NONE ctermbg=232 ctermfg=233 gui=NONE guibg=#121212 guifg=#ffaf00
+" hi User1 cterm=NONE ctermbg=233 ctermfg=202 gui=NONE guibg=#121212 guifg=#ff5f00
+" hi User2 cterm=NONE ctermbg=233 ctermfg=240 gui=NONE guibg=#121212 guifg=#585858
+" hi User3 cterm=NONE ctermbg=232 ctermfg=233 gui=NONE guibg=#121212 guifg=#ffaf00
 
-if has('statusline')
-    set statusline=
-    set statusline+=%1*                               " <-- Orange
-    set statusline+=[%{toupper(mode())}]\             " Show the current mode
-    set statusline+=%q                                " Quickfix List, Location List, or empty
-    set statusline+=%*                                " <-- Clear highlighting
-    set statusline+=%<%F\                             " Fuil path to the file in the buffer
-    set statusline+=%1*                               " <-- Orange
-    set statusline+=%m\                               " Modified flag (hide if empty)
-    set statusline+=%2*                               " <-- Gray/italic
-    set statusline+=%{fugitive#statusline()}          " Git status (hide if empty)
-    set statusline+=%*                                " <-- Clear highlighting
-    set statusline+=%=                                " Left ------------------------ Right
-    set statusline+=%*                                " <-- Clear highlighting
-    set statusline+=%3*                               " <-- Yellow
-    set statusline+=%{SyntasticStatuslineFlag()}\     " Syntastic status
-    set statusline+=%2*                               " <-- Gray/italic
-    set statusline+=%r                                " Read-only flag (hide if empty)
-    set statusline+=%y                                " Type of file
-    set statusline+=\                                 " One space
-    set statusline+=%p%%\                             " Percentage through file by line
-    set statusline+=%l,%c                             " Line, Column
-    set statusline+=%*                                " <-- Clear highlighting
-endif
+" if has('statusline')
+    " set statusline=
+    " set statusline+=%1*                               " <-- Orange
+    " set statusline+=[%{toupper(mode())}]\             " Show the current mode
+    " set statusline+=%q                                " Quickfix List, Location List, or empty
+    " set statusline+=%*                                " <-- Clear highlighting
+    " set statusline+=%<%F\                             " Fuil path to the file in the buffer
+    " set statusline+=%1*                               " <-- Orange
+    " set statusline+=%m\                               " Modified flag (hide if empty)
+    " set statusline+=%2*                               " <-- Gray/italic
+    " set statusline+=%{fugitive#statusline()}          " Git status (hide if empty)
+    " set statusline+=%*                                " <-- Clear highlighting
+    " set statusline+=%=                                " Left ------------------------ Right
+    " set statusline+=%*                                " <-- Clear highlighting
+    " set statusline+=%{tagbar#currenttag('%s','','fs')}  " Show current tag from tagbar
+    " set statusline+=%3*                               " <-- Yellow
+    " set statusline+=%{SyntasticStatuslineFlag()}\     " Syntastic status
+    " set statusline+=%2*                               " <-- Gray/italic
+    " set statusline+=%r                                " Read-only flag (hide if empty)
+    " set statusline+=%y                                " Type of file
+    " set statusline+=\                                 " One space
+    " set statusline+=%p%%\                             " Percentage through file by line
+    " set statusline+=%l,%c                             " Line, Column
+    " set statusline+=%*                                " <-- Clear highlighting
+" endif
 
 nnoremap <BS> :noh<CR><BS>
 
@@ -442,8 +398,8 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#auto_vim_configuration = 0
 
-" \tl - Toggle taglist
-nnoremap <leader>tl :TlistToggle<cr>
+" \tb - Toggle tagbar
+nnoremap <leader>tb :TagbarToggle<cr>
 
 set scrolloff=1
 set sidescrolloff=5
@@ -452,6 +408,8 @@ set display+=lastline
 " Make sure ctrlp shows hidden files
 let g:ctrlp_show_hidden = 1
 
-set history=1000
+set history=1001
 
 set noshowmode
+
+let g:airline_theme='jellybeans'
