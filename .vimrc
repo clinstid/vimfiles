@@ -413,3 +413,6 @@ set history=1001
 set noshowmode
 
 let g:airline_theme='jellybeans'
+
+" For git commit messages always start at the first line
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
