@@ -79,6 +79,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 
 Plugin 'PotatoesMaster/i3-vim-syntax'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -414,4 +416,7 @@ set history=1001
 
 set noshowmode
 
-let g:airline_theme='jellybeans'
+let g:airline_theme='serene'
+
+" For git commit messages always start at the first line
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
