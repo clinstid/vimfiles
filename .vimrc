@@ -82,6 +82,8 @@ Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 
+Plugin 'suan/vim-instant-markdown'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -219,9 +221,11 @@ if has("gui_running")
         set guifont=Hack\ 9
     endif
     set background=dark
+    let g:jellybeans_background_color='000000'
     colorscheme jellybeans
 else
     set background=dark
+    let g:jellybeans_background_color='000000'
     colorscheme jellybeans
 endif
 
@@ -416,7 +420,10 @@ set history=1001
 
 set noshowmode
 
-let g:airline_theme='jellybeans'
+let g:airline_theme='serene'
 
 " For git commit messages always start at the first line
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+
+" Don't automatically start markdown preview
+let g:instant_markdown_autostart = 0
