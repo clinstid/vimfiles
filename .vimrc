@@ -182,22 +182,6 @@ set wildmode=longest,list,full
 " nmap <C-S-v> "+p
 " vmap <C-S-c> "+y
 
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-    if (has("nvim"))
-	"For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    endif
-    "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-    "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-    " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-    if (has("termguicolors"))
-	set termguicolors
-    endif
-endif
-
 " GUI specific options
 if has("gui_running")
     " window size
@@ -225,8 +209,15 @@ if has("gui_running")
     colorscheme jellybeans
 else
     set background=dark
-    let g:jellybeans_background_color='none'
-    let g:jellybeans_background_color_256='none'
+    if v:version >= 800
+        " vim version 8 added support for hex color codes in terminal
+        let g:jellybeans_background_color="000000"
+        let g:jellybeans_background_color_256="000000"
+    else
+        " vim version < 8 doesn't support hex color codes
+        let g:jellybeans_background_color='none'
+        let g:jellybeans_background_color_256='none'
+    endif
     colorscheme jellybeans
 endif
 
@@ -422,6 +413,29 @@ set history=1001
 set noshowmode
 
 let g:airline_theme='serene'
+
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
 
 " For git commit messages always start at the first line
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
