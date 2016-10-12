@@ -225,7 +225,8 @@ if has("gui_running")
     colorscheme jellybeans
 else
     set background=dark
-    let g:jellybeans_background_color='000000'
+    let g:jellybeans_background_color='none'
+    let g:jellybeans_background_color_256='none'
     colorscheme jellybeans
 endif
 
