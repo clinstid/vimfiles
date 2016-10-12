@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 
 " completion
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Shougo/neocomplete.vim'
 
 " Fuzzy file finding
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -75,8 +75,6 @@ Plugin 'clinstid/vim-behave'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'flazz/vim-colorschemes'
 
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'honza/vim-snippets'
@@ -166,13 +164,13 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 autocmd FileType markdown setlocal spell
 
-let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_at_startup = 1
 " let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#enable_smart_case = 1
 " let g:neocomplete#auto_completion_start_length = 2
 
 " Enable tab to use neocomplete
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Show a list and complete up to the longest match
 set wildmenu
@@ -243,7 +241,7 @@ set encoding=utf-8
 map <leader>mr :MRU<cr>
 
 " copy to system clipboard
-vmap <C-c> "*y
+vmap <C-S-c> "*y
 
 " toggle nerdtree
 map <leader>e :NERDTreeToggle<cr>
@@ -263,10 +261,11 @@ map <leader>q :set nohlsearch<cr>
 autocmd BufEnter * silent! lcd %:p:h
 
 " remote whitespace on save
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre *.md :%s/\s\+$//e
-autocmd BufWritePre *.rb :%s/\s\+$//e
-autocmd BufWritePre *.js :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre *.py :%s/\s\+$//e
+" autocmd BufWritePre *.md :%s/\s\+$//e
+" autocmd BufWritePre *.rb :%s/\s\+$//e
+" autocmd BufWritePre *.js :%s/\s\+$//e
 
 " mc files are mason
 au BufNewFile,BufRead *.mc set filetype=mason
@@ -347,7 +346,7 @@ let python_highlight_all = 1
 set conceallevel=0
 let g:vim_markdown_conceal = 0
 
-set fillchars=vert:\  
+set fillchars=vert:\│
 
 function! GetFullModeName(mode)
     if a:mode ==? 'i'
@@ -360,42 +359,11 @@ function! GetFullModeName(mode)
     return 'UNKNOWN'
 endfunction
 
-" Status Line
-" hi User1 cterm=NONE ctermbg=233 ctermfg=202 gui=NONE guibg=#121212 guifg=#ff5f00
-" hi User2 cterm=NONE ctermbg=233 ctermfg=240 gui=NONE guibg=#121212 guifg=#585858
-" hi User3 cterm=NONE ctermbg=232 ctermfg=233 gui=NONE guibg=#121212 guifg=#ffaf00
-
-" if has('statusline')
-    " set statusline=
-    " set statusline+=%1*                               " <-- Orange
-    " set statusline+=[%{toupper(mode())}]\             " Show the current mode
-    " set statusline+=%q                                " Quickfix List, Location List, or empty
-    " set statusline+=%*                                " <-- Clear highlighting
-    " set statusline+=%<%F\                             " Fuil path to the file in the buffer
-    " set statusline+=%1*                               " <-- Orange
-    " set statusline+=%m\                               " Modified flag (hide if empty)
-    " set statusline+=%2*                               " <-- Gray/italic
-    " set statusline+=%{fugitive#statusline()}          " Git status (hide if empty)
-    " set statusline+=%*                                " <-- Clear highlighting
-    " set statusline+=%=                                " Left ------------------------ Right
-    " set statusline+=%*                                " <-- Clear highlighting
-    " set statusline+=%{tagbar#currenttag('%s','','fs')}  " Show current tag from tagbar
-    " set statusline+=%3*                               " <-- Yellow
-    " set statusline+=%{SyntasticStatuslineFlag()}\     " Syntastic status
-    " set statusline+=%2*                               " <-- Gray/italic
-    " set statusline+=%r                                " Read-only flag (hide if empty)
-    " set statusline+=%y                                " Type of file
-    " set statusline+=\                                 " One space
-    " set statusline+=%p%%\                             " Percentage through file by line
-    " set statusline+=%l,%c                             " Line, Column
-    " set statusline+=%*                                " <-- Clear highlighting
-" endif
-
 nnoremap <BS> :noh<CR><BS>
 
 " jedi configuration
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 1
+let g:jedi#popup_select_first = 1
 let g:jedi#auto_vim_configuration = 0
 
 " \tb - Toggle tagbar
