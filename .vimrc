@@ -362,8 +362,8 @@ endfunction
 nnoremap <BS> :noh<CR><BS>
 
 " jedi configuration
-let g:jedi#popup_on_dot = 1
-let g:jedi#popup_select_first = 1
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
 let g:jedi#auto_vim_configuration = 0
 
 " \tb - Toggle tagbar
