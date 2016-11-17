@@ -12,13 +12,14 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 
 " completion
-" Plugin 'Shougo/neocomplete.vim'
+Plugin 'ajh17/VimCompletesMe'
 
 " Fuzzy file finding
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " comment helper
-Plugin 'scrooloose/nerdcommenter'
+" Plugin 'scrooloose/nerdcommenter'
+Plugin 'clinstid/nerdcommenter'
 
 " comment helper
 Plugin 'scrooloose/nerdtree'
@@ -46,6 +47,7 @@ Plugin 'vim-ruby/vim-ruby'
 " markdown support
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'mzlogin/vim-markdown-toc'
 
 Plugin 'davidhalter/jedi-vim'
 Plugin 'hynek/vim-python-pep8-indent'
@@ -55,7 +57,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mitsuhiko/vim-jinja'
 
 " syntax support for ansible dialect of yaml
-Plugin 'chase/vim-ansible-yaml'
+" Plugin 'chase/vim-ansible-yaml'
+Plugin 'pearofducks/ansible-vim'
 
 Plugin 'stephpy/vim-yaml'
 
@@ -78,9 +81,15 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'honza/vim-snippets'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 
 Plugin 'suan/vim-instant-markdown'
+
+Plugin 'vim-scripts/sessionman.vim'
+
+Plugin 'vim-scripts/DrawIt'
+" Plugin 'Konfekt/FastFold'
+" Plugin 'tmhedberg/SimpylFold'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -156,21 +165,13 @@ set t_Co=256
 set mouse=a
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 autocmd FileType markdown setlocal spell
-
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_auto_select = 1
-" let g:neocomplete#enable_smart_case = 1
-" let g:neocomplete#auto_completion_start_length = 2
-
-" Enable tab to use neocomplete
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Show a list and complete up to the longest match
 set wildmenu
@@ -191,6 +192,7 @@ if has("gui_running")
     "   i: enable vim icon
     "   p: use pointer callbacks for X11 GUI, needed for some window managers
     set go=aip
+    set fillchars="vert:\ "
     set mousemodel=popup_setpos
     set nomousehide
     set noerrorbells visualbell t_vb=
@@ -206,6 +208,7 @@ if has("gui_running")
     let g:jellybeans_background_color='000000'
     colorscheme jellybeans
 else
+    set fillchars="vert:\|"
     set background=dark
     if v:version >= 800
         " vim version 8 added support for hex color codes in terminal
@@ -233,6 +236,7 @@ filetype plugin on
 " syntastic options
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_yaml_checkers = ['jsyaml']
+let g:syntastic_python_python_exec = 'python3'
 " /syntastic options
 
 set encoding=utf-8
@@ -272,6 +276,15 @@ au BufNewFile,BufRead *.mc set filetype=mason
 
 " ng-template files are html/angularjs
 au BufNewFile,BufRead *.ng-template set filetype=html
+
+" template files are probably JSON
+au BufNewFile,BufRead *.template set filetype=json
+
+" files in */playbooks/*.yml are probably ansible
+au BufNewFile,BufRead */playbooks/*.yml set filetype=ansible
+
+" files that start with Dockerfile are probably docker files
+au BufNewFile,BufRead Dockerfile* set filetype=dockerfile
 
 " look for a tags file
 set tags=tags;
@@ -322,7 +335,7 @@ let g:vim_json_syntax_conceal = 0
 
 " vmap <C-c> "+y
 
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 
 if has("mouse_sgr")
     set ttymouse=sgr
@@ -345,19 +358,6 @@ let python_highlight_all = 1
 
 set conceallevel=0
 let g:vim_markdown_conceal = 0
-
-set fillchars=vert:\│
-
-function! GetFullModeName(mode)
-    if a:mode ==? 'i'
-        return 'INSERT'
-    elseif a:mode ==? 'n'
-        return 'NORMAL'
-    elseif a:mode ==? 'v'
-        return 'VISUAL'
-    endif
-    return 'UNKNOWN'
-endfunction
 
 nnoremap <BS> :noh<CR><BS>
 
@@ -388,9 +388,11 @@ endif
 
 " unicode symbols
 let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
+" let g:airline_left_sep = '▶'
+let g:airline_left_sep = '>'
 let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
+" let g:airline_right_sep = '◀'
+let g:airline_right_sep = '<'
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
@@ -410,3 +412,12 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
 " Don't automatically start markdown preview
 let g:instant_markdown_autostart = 0
+" Slow down instant markdown preview
+let g:instant_markdown_slow = 1
+
+" Folding settings
+" set foldmethod=manual
+" let g:SimpylFold_docstring_preview = 1
+" let g:SimpylFold_fold_docstring = 0
+" let g:SimpylFold_fold_import = 0
+" set fdc=0
