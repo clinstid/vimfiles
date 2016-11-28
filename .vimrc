@@ -91,6 +91,8 @@ Plugin 'vim-scripts/DrawIt'
 " Plugin 'Konfekt/FastFold'
 " Plugin 'tmhedberg/SimpylFold'
 
+Plugin 'nathanaelkane/vim-indent-guides'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
