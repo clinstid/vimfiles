@@ -30,7 +30,11 @@ Plugin 'jlanzarotta/bufexplorer'
 " Perl support
 Plugin 'vim-perl/vim-perl'
 
+" color schemes
 Plugin 'clinstid/jellybeans.vim'
+Plugin 'clinstid/vylight.vim'
+Plugin 'clinstid/papercolor-theme.vim'
+Plugin 'altercation/vim-colors-solarized'
 
 " syntax checking
 Plugin 'scrooloose/syntastic'
@@ -206,9 +210,13 @@ if has("gui_running")
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Hack\ 9
     endif
-    set background=dark
-    let g:jellybeans_background_color='000000'
-    colorscheme jellybeans
+    " set background=dark
+    " let g:jellybeans_background_color='000000'
+    " colorscheme jellybeans
+    " let g:airline_theme='serene'
+    set background=light
+    colorscheme solarized
+    let g:airline_theme='solarized'
 else
     set fillchars="vert:\|"
     set background=dark
@@ -222,6 +230,7 @@ else
         let g:jellybeans_background_color_256='none'
     endif
     colorscheme jellybeans
+    let g:airline_theme='serene'
 endif
 
 
@@ -287,6 +296,9 @@ au BufNewFile,BufRead */playbooks/*.yml set filetype=ansible
 
 " files that start with Dockerfile are probably docker files
 au BufNewFile,BufRead Dockerfile* set filetype=dockerfile
+
+" files that contain Berksfile are ruby
+au BufNewFile,BufRead *Berksfile* set filetype=ruby
 
 " look for a tags file
 set tags=tags;
@@ -382,8 +394,6 @@ set history=1001
 
 set noshowmode
 
-let g:airline_theme='serene'
-
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
 endif
@@ -423,3 +433,5 @@ let g:instant_markdown_slow = 1
 " let g:SimpylFold_fold_docstring = 0
 " let g:SimpylFold_fold_import = 0
 " set fdc=0
+
+let g:vim_markdown_new_list_item_indent = 2
