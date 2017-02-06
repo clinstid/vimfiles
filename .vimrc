@@ -35,6 +35,11 @@ Plugin 'clinstid/jellybeans.vim'
 Plugin 'clinstid/vylight.vim'
 Plugin 'clinstid/papercolor-theme.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'notpratheek/vim-sol'
+Plugin 'notpratheek/vim-luna'
+Plugin 'sickill/vim-monokai'
+Plugin 'tomasr/molokai'
+Plugin 'sheerun/vim-wombat-scheme'
 
 " syntax checking
 Plugin 'scrooloose/syntastic'
@@ -98,6 +103,9 @@ Plugin 'vim-scripts/DrawIt'
 Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'fatih/vim-go'
+
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -208,17 +216,18 @@ if has("gui_running")
     set guicursor=a:blinkon0
     if has("gui_macvim")
         set guifont=Hack\ Regular:h12
+        set transparency=5
     else
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Hack\ 9
     endif
-    " set background=dark
-    " let g:jellybeans_background_color='000000'
-    " colorscheme jellybeans
-    " let g:airline_theme='serene'
-    set background=light
-    colorscheme solarized
-    let g:airline_theme='solarized'
+    set background=dark
+    let g:jellybeans_background_color='000000'
+    colorscheme jellybeans
+    let g:airline_theme='jellybeans'
+    " set background=light
+    " colorscheme vylight
+    " let g:airline_theme='silver'
 else
     set fillchars="vert:\|"
     set background=dark
@@ -232,7 +241,7 @@ else
         let g:jellybeans_background_color_256='none'
     endif
     colorscheme jellybeans
-    let g:airline_theme='serene'
+    let g:airline_theme='jellybeans'
 endif
 
 
@@ -347,7 +356,7 @@ endif
 " Don't conceal quotes in JSON files
 let g:vim_json_syntax_conceal = 0
 
-" set cursorline
+set cursorline
 
 " vmap <C-c> "+y
 
