@@ -21,8 +21,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'scrooloose/nerdcommenter'
 Plugin 'clinstid/nerdcommenter'
 
-" comment helper
 Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/unite.vim'
 
 " file browser
 Plugin 'jlanzarotta/bufexplorer'
@@ -42,7 +42,8 @@ Plugin 'tomasr/molokai'
 Plugin 'sheerun/vim-wombat-scheme'
 
 " syntax checking
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'neomake/neomake'
 
 " most recently used files
 Plugin 'yegappan/mru'
@@ -89,8 +90,14 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'PotatoesMaster/i3-vim-syntax'
+
+" Snippets
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-" Plugin 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsListSnippers="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plugin 'suan/vim-instant-markdown'
 
@@ -106,6 +113,12 @@ Plugin 'fatih/vim-go'
 
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
+
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'artur-shaik/vim-javacomplete2'
+
+Plugin 'vim-scripts/confluencewiki.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -181,11 +194,12 @@ set t_Co=256
 set mouse=a
 
 " Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 autocmd FileType markdown setlocal spell
 
@@ -216,7 +230,6 @@ if has("gui_running")
     set guicursor=a:blinkon0
     if has("gui_macvim")
         set guifont=Hack\ Regular:h12
-        set transparency=5
     else
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Hack\ 9
@@ -256,9 +269,9 @@ filetype indent on
 filetype plugin on
 
 " syntastic options
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_yaml_checkers = ['jsyaml']
-let g:syntastic_python_python_exec = 'python3'
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" let g:syntastic_yaml_checkers = ['jsyaml']
+" let g:syntastic_python_python_exec = 'python3'
 " /syntastic options
 
 set encoding=utf-8
@@ -410,12 +423,12 @@ let g:airline_symbols = {}
 endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-" let g:airline_left_sep = '▶'
-let g:airline_left_sep = '>'
-let g:airline_right_sep = '«'
-" let g:airline_right_sep = '◀'
-let g:airline_right_sep = '<'
+" let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+" let g:airline_left_sep = '>'
+" let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+" let g:airline_right_sep = '<'
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
@@ -446,3 +459,5 @@ let g:instant_markdown_slow = 1
 " set fdc=0
 
 let g:vim_markdown_new_list_item_indent = 2
+
+autocmd! BufWritePost * Neomake
