@@ -120,6 +120,8 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'vim-scripts/confluencewiki.vim'
 
+Plugin 'junegunn/fzf'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -198,7 +200,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 autocmd FileType markdown setlocal spell
@@ -222,7 +224,7 @@ if has("gui_running")
     "   i: enable vim icon
     "   p: use pointer callbacks for X11 GUI, needed for some window managers
     set go=aip
-    set fillchars="vert:\ "
+    set fillchars="vert:\│"
     set mousemodel=popup_setpos
     set nomousehide
     set noerrorbells visualbell t_vb=
@@ -242,7 +244,7 @@ if has("gui_running")
     " colorscheme vylight
     " let g:airline_theme='silver'
 else
-    set fillchars="vert:\|"
+    set fillchars="vert:\│"
     set background=dark
     if v:version >= 800
         " vim version 8 added support for hex color codes in terminal
