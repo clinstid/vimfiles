@@ -22,10 +22,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'clinstid/nerdcommenter'
 
 Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/unite.vim'
+" Plugin 'Shougo/unite.vim'
 
 " file browser
-" Plugin 'jlanzarotta/bufexplorer'
+Plugin 'jlanzarotta/bufexplorer'
 
 " Perl support
 Plugin 'vim-perl/vim-perl'
@@ -101,7 +101,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plugin 'suan/vim-instant-markdown'
 
-Plugin 'vim-scripts/sessionman.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 Plugin 'vim-scripts/DrawIt'
 " Plugin 'Konfekt/FastFold'
@@ -120,7 +121,9 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'vim-scripts/confluencewiki.vim'
 
-Plugin 'junegunn/fzf'
+" Plugin 'junegunn/fzf'
+
+Plugin 'vimwiki/vimwiki'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -239,10 +242,10 @@ if has("gui_running")
     set background=dark
     let g:jellybeans_background_color='000000'
     colorscheme jellybeans
-    let g:airline_theme='jellybeans'
-    " set background=light
-    " colorscheme vylight
-    " let g:airline_theme='silver'
+    let g:airline_theme='serene'
+    set background=light
+    colorscheme vylight
+    let g:airline_theme='silver'
 else
     set fillchars="vert:\│"
     set background=dark
@@ -256,7 +259,7 @@ else
         let g:jellybeans_background_color_256='none'
     endif
     colorscheme jellybeans
-    let g:airline_theme='jellybeans'
+    let g:airline_theme='serene'
 endif
 
 
@@ -464,4 +467,12 @@ let g:vim_markdown_new_list_item_indent = 2
 
 autocmd! BufWritePost * Neomake
 
-nmap <leader>be :Unite buffer<cr>
+" nmap <leader>be :Unite buffer<cr>
+
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+
+" Session stuff
+let g:session_autoload = "no"
+let g:session_autosave = "yes"
+
+nnoremap <leader>os :OpenSession<cr>
