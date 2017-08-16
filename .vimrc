@@ -123,8 +123,6 @@ Plugin 'vim-scripts/confluencewiki.vim'
 
 " Plugin 'junegunn/fzf'
 
-Plugin 'vimwiki/vimwiki'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -199,12 +197,12 @@ set t_Co=256
 set mouse=a
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 autocmd FileType markdown setlocal spell
 
@@ -242,10 +240,10 @@ if has("gui_running")
     set background=dark
     let g:jellybeans_background_color='000000'
     colorscheme jellybeans
-    let g:airline_theme='serene'
-    set background=light
-    colorscheme vylight
-    let g:airline_theme='silver'
+    let g:airline_theme='jellybeans'
+    " set background=light
+    " colorscheme vylight
+    " let g:airline_theme='silver'
 else
     set fillchars="vert:\│"
     set background=dark
@@ -259,7 +257,7 @@ else
         let g:jellybeans_background_color_256='none'
     endif
     colorscheme jellybeans
-    let g:airline_theme='serene'
+    let g:airline_theme='jellybeans'
 endif
 
 
@@ -468,8 +466,6 @@ let g:vim_markdown_new_list_item_indent = 2
 autocmd! BufWritePost * Neomake
 
 " nmap <leader>be :Unite buffer<cr>
-
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 
 " Session stuff
 let g:session_autoload = "no"
