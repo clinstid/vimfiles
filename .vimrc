@@ -121,6 +121,10 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'vim-scripts/confluencewiki.vim'
 
+" Typescript plugins
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
+
 " Plugin 'junegunn/fzf'
 
 " All of your Plugins must be added before the following line
