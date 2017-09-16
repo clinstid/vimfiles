@@ -243,14 +243,11 @@ if has("gui_running")
     endif
     set background=dark
     let g:jellybeans_background_color='000000'
-    colorscheme jellybeans
-    let g:airline_theme='jellybeans'
-    " set background=light
-    " colorscheme vylight
-    " let g:airline_theme='silver'
+    set background=light
+    colorscheme PaperColor
+    let g:airline_theme='papercolor'
 else
     set fillchars="vert:\│"
-    set background=dark
     if v:version >= 800
         " vim version 8 added support for hex color codes in terminal
         let g:jellybeans_background_color="000000"
@@ -260,8 +257,9 @@ else
         let g:jellybeans_background_color='none'
         let g:jellybeans_background_color_256='none'
     endif
-    colorscheme jellybeans
-    let g:airline_theme='jellybeans'
+    set background=light
+    colorscheme PaperColor
+    let g:airline_theme='papercolor'
 endif
 
 
@@ -376,7 +374,7 @@ endif
 " Don't conceal quotes in JSON files
 let g:vim_json_syntax_conceal = 0
 
-set cursorline
+" set cursorline
 
 " vmap <C-c> "+y
 
