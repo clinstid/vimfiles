@@ -127,6 +127,13 @@ Plugin 'Quramy/tsuquyomi'
 
 " Plugin 'junegunn/fzf'
 
+" orgmode stuff
+" Plugin 'jceb/vim-orgmode'
+" Plugin 'tpope/vim-speeddating'
+" Plugin 'mattn/calendar-vim'
+
+Plugin 'vimwiki/vimwiki'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -218,6 +225,14 @@ set wildmode=longest,list,full
 " nmap <C-S-v> "+p
 " vmap <C-S-c> "+y
 
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+
 " GUI specific options
 if has("gui_running")
     " window size
@@ -242,22 +257,11 @@ if has("gui_running")
         set guifont=Hack\ 9
     endif
     set background=dark
-    let g:jellybeans_background_color='000000'
-    set background=light
     colorscheme PaperColor
     let g:airline_theme='papercolor'
 else
     set fillchars="vert:\│"
-    if v:version >= 800
-        " vim version 8 added support for hex color codes in terminal
-        let g:jellybeans_background_color="000000"
-        let g:jellybeans_background_color_256="000000"
-    else
-        " vim version < 8 doesn't support hex color codes
-        let g:jellybeans_background_color='none'
-        let g:jellybeans_background_color_256='none'
-    endif
-    set background=light
+    set background=dark
     colorscheme PaperColor
     let g:airline_theme='papercolor'
 endif
@@ -374,7 +378,7 @@ endif
 " Don't conceal quotes in JSON files
 let g:vim_json_syntax_conceal = 0
 
-" set cursorline
+set cursorline
 
 " vmap <C-c> "+y
 
@@ -474,3 +478,6 @@ let g:session_autoload = "no"
 let g:session_autosave = "yes"
 
 nnoremap <leader>os :OpenSession<cr>
+
+" vimwiki/vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
