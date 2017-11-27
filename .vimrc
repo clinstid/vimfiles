@@ -127,12 +127,8 @@ Plugin 'Quramy/tsuquyomi'
 
 " Plugin 'junegunn/fzf'
 
-" orgmode stuff
-" Plugin 'jceb/vim-orgmode'
-" Plugin 'tpope/vim-speeddating'
-" Plugin 'mattn/calendar-vim'
-
-Plugin 'vimwiki/vimwiki'
+Plugin 'xolox/vim-notes'
+Plugin 'vim-scripts/utl.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -194,6 +190,7 @@ set undolevels=1000
 
 " Vim can set the title of the terminal window
 set title
+set icon
 
 " Disable bell
 set noerrorbells
@@ -225,16 +222,9 @@ set wildmode=longest,list,full
 " nmap <C-S-v> "+p
 " vmap <C-S-c> "+y
 
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
-
 " GUI specific options
 if has("gui_running")
+    set ghr=0
     " window size
     " set columns=80
     " set lines=40
@@ -258,12 +248,20 @@ if has("gui_running")
     endif
     set background=dark
     colorscheme PaperColor
-    let g:airline_theme='papercolor'
+    let g:airline_theme='base16_grayscale'
 else
     set fillchars="vert:\│"
     set background=dark
+    let g:PaperColor_Theme_Options = {
+      \   'theme': {
+      \     'default': {
+      \       'transparent_background': 1
+      \     }
+      \   }
+      \ }
+
     colorscheme PaperColor
-    let g:airline_theme='papercolor'
+    let g:airline_theme='base16_grayscale'
 endif
 
 
@@ -469,7 +467,7 @@ let g:instant_markdown_slow = 1
 
 let g:vim_markdown_new_list_item_indent = 2
 
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 " nmap <leader>be :Unite buffer<cr>
 
@@ -479,5 +477,9 @@ let g:session_autosave = "yes"
 
 nnoremap <leader>os :OpenSession<cr>
 
-" vimwiki/vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+nmap <leader>id "=strftime("# %b %d %Y\n")<CR>P
+
+let g:notes_directories = ['~/Dropbox/Oracle/vim-notes']
+
+nmap <leader>notdone :s/DONE/TODO/<cr>:set nohlsearch<cr>
+nmap <leader>done :s/TODO/DONE/<cr>:set nohlsearch<cr>
