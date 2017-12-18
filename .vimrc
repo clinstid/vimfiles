@@ -350,7 +350,7 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_lint_ignore = "C901"
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 
-set nospell
+set spell
 nmap <leader>so :set spell<cr>
 nmap <leader>sf :set nospell<cr>
 
