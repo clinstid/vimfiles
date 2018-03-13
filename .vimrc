@@ -1,4 +1,3 @@
-" Vundle
 set nocompatible
 filetype off
 
@@ -32,6 +31,7 @@ Plugin 'vim-perl/vim-perl'
 
 " color schemes
 Plugin 'clinstid/jellybeans.vim'
+Plugin 'clinstid/eink.vim'
 Plugin 'clinstid/vylight.vim'
 Plugin 'clinstid/papercolor-theme.vim'
 Plugin 'altercation/vim-colors-solarized'
@@ -131,6 +131,8 @@ Plugin 'xolox/vim-notes'
 Plugin 'vim-scripts/utl.vim'
 
 Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'lifepillar/pgsql.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -248,11 +250,18 @@ if has("gui_running")
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Hack\ 9
     endif
+    " Dark colors
     set background=dark
     colorscheme PaperColor
-    let g:airline_theme='base16_grayscale'
+    let g:airline_theme='serene'
+
+    " Light colors
+    " set background=light
+    " colorscheme solarized
+    " let g:airline_theme='solarized'
 else
     set fillchars="vert:\│"
+    " Dark colors
     set background=dark
     let g:PaperColor_Theme_Options = {
       \   'theme': {
@@ -261,9 +270,13 @@ else
       \     }
       \   }
       \ }
-
     colorscheme PaperColor
-    let g:airline_theme='base16_grayscale'
+    let g:airline_theme='serene'
+
+    " Light colors
+    " set background=light
+    " colorscheme solarized
+    " let g:airline_theme='solarized'
 endif
 
 
@@ -403,7 +416,7 @@ nmap <leader>p :echo expand('%:p')<cr>
 let g:pymode_rope_complete_on_dot = 0
 let python_highlight_all = 1
 
-set conceallevel=0
+set conceallevel=1
 let g:vim_markdown_conceal = 0
 
 nnoremap <BS> :noh<CR><BS>
@@ -479,9 +492,13 @@ let g:session_autosave = "yes"
 
 nnoremap <leader>os :OpenSession<cr>
 
-nmap <leader>id "=strftime("# %b %d %Y\n")<CR>P
+" Insert the current date
+nmap <leader>id O<esc>"=strftime("# %b %d %Y\n")<CR>P<CR>i
 
 let g:notes_directories = ['~/Dropbox/Oracle/vim-notes']
+let g:notes_conceal_code = 0
+" let g:notes_smart_quotes = 0
 
 nmap <leader>notdone :s/DONE/TODO/<cr>:set nohlsearch<cr>
 nmap <leader>done :s/TODO/DONE/<cr>:set nohlsearch<cr>
+nmap <leader>td o	- TODO
