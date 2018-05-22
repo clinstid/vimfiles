@@ -41,6 +41,7 @@ Plugin 'clinstid/papercolor-theme.vim'
 " Plugin 'sickill/vim-monokai'
 " Plugin 'tomasr/molokai'
 " Plugin 'sheerun/vim-wombat-scheme'
+Plugin 'joshdick/onedark.vim'
 
 " syntax checking
 " Plugin 'scrooloose/syntastic'
@@ -134,6 +135,10 @@ Plugin 'vim-scripts/utl.vim'
 Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'lifepillar/pgsql.vim'
+
+Plugin 'dylon/vim-antlr'
+
+Plugin 'isobit/vim-caddyfile'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -346,6 +351,10 @@ au BufNewFile,BufRead Dockerfile* set filetype=dockerfile
 
 " files that contain Berksfile are ruby
 au BufNewFile,BufRead *Berksfile* set filetype=ruby
+
+" ANTLR files
+au BufRead,BufNewFile *.g set filetype=antlr3
+au BufRead,BufNewFile *.g4 set filetype=antlr4
 
 " look for a tags file
 set tags=tags;
