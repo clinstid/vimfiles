@@ -4,7 +4,8 @@ if exists('b:did_ftplugin')
 endif
 let b:did_ftplugin = 1
 
-autocmd BufWritePre *.go :GoImports
+" autocmd BufWritePre *.go :GoImports
+nmap <leader>gi :GoImports<cr>
 
 setlocal shiftwidth=4
 setlocal tabstop=4
