@@ -9,16 +9,17 @@ Plugin 'gmarik/Vundle.vim'
 
 " Git support
 Plugin 'tpope/vim-fugitive'
+Plugin 'jreybert/vimagit'
 
 " completion
-Plugin 'ajh17/VimCompletesMe'
+" Plugin 'ajh17/VimCompletesMe'
 
 " Fuzzy file finding
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " comment helper
-" Plugin 'scrooloose/nerdcommenter'
-Plugin 'clinstid/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
+" Plugin 'clinstid/nerdcommenter'
 
 Plugin 'scrooloose/nerdtree'
 " Plugin 'Shougo/unite.vim'
@@ -27,19 +28,19 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jlanzarotta/bufexplorer'
 
 " Perl support
-Plugin 'vim-perl/vim-perl'
+" Plugin 'vim-perl/vim-perl'
 
 " color schemes
 Plugin 'clinstid/jellybeans.vim'
-Plugin 'clinstid/eink.vim'
-Plugin 'clinstid/vylight.vim'
+" Plugin 'clinstid/eink.vim'
+" Plugin 'clinstid/vylight.vim'
 Plugin 'clinstid/papercolor-theme.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'notpratheek/vim-sol'
-Plugin 'notpratheek/vim-luna'
-Plugin 'sickill/vim-monokai'
-Plugin 'tomasr/molokai'
-Plugin 'sheerun/vim-wombat-scheme'
+" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'notpratheek/vim-sol'
+" Plugin 'notpratheek/vim-luna'
+" Plugin 'sickill/vim-monokai'
+" Plugin 'tomasr/molokai'
+" Plugin 'sheerun/vim-wombat-scheme'
 
 " syntax checking
 " Plugin 'scrooloose/syntastic'
@@ -52,7 +53,7 @@ Plugin 'yegappan/mru'
 Plugin 'yegappan/grep'
 
 " Ruby support
-Plugin 'vim-ruby/vim-ruby'
+" Plugin 'vim-ruby/vim-ruby'
 
 " markdown support
 Plugin 'godlygeek/tabular'
@@ -82,9 +83,9 @@ Plugin 'elzr/vim-json'
 
 Plugin 'rking/ag.vim'
 
-Plugin 'medihack/sh.vim'
+" Plugin 'medihack/sh.vim'
 
-Plugin 'clinstid/vim-behave'
+" Plugin 'clinstid/vim-behave'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -92,19 +93,19 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 
 " Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsListSnippers="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" Plugin 'SirVer/ultisnips'
+" Plugin 'honza/vim-snippets'
+" let g:UltiSnipsExpandTrigger="<s-tab>"
+" let g:UltiSnipsListSnippers="<c-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-Plugin 'suan/vim-instant-markdown'
+" Plugin 'suan/vim-instant-markdown'
 
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
+" Plugin 'xolox/vim-session'
 
-Plugin 'vim-scripts/DrawIt'
+" Plugin 'vim-scripts/DrawIt'
 " Plugin 'Konfekt/FastFold'
 " Plugin 'tmhedberg/SimpylFold'
 
@@ -112,12 +113,12 @@ Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'fatih/vim-go'
 
-Plugin 'Shougo/vimshell.vim'
+" Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
 
-Plugin 'airblade/vim-gitgutter'
+" Plugin 'airblade/vim-gitgutter'
 
-Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'vim-scripts/confluencewiki.vim'
 
@@ -365,7 +366,7 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_lint_ignore = "C901"
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 
-set spell
+" set spell
 nmap <leader>so :set spell<cr>
 nmap <leader>sf :set nospell<cr>
 
@@ -391,7 +392,7 @@ endif
 " Don't conceal quotes in JSON files
 let g:vim_json_syntax_conceal = 0
 
-set cursorline
+" set cursorline
 
 " vmap <C-c> "+y
 
@@ -502,3 +503,5 @@ let g:notes_conceal_code = 0
 nmap <leader>notdone :s/DONE/TODO/<cr>:set nohlsearch<cr>
 nmap <leader>done :s/TODO/DONE/<cr>:set nohlsearch<cr>
 nmap <leader>td o	- TODO
+
+set synmaxcol=300
