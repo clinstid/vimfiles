@@ -13,6 +13,7 @@ Plugin 'jreybert/vimagit'
 
 " completion
 " Plugin 'ajh17/VimCompletesMe'
+Plugin 'ervandew/supertab'
 
 " Fuzzy file finding
 Plugin 'ctrlpvim/ctrlp.vim'
