@@ -43,6 +43,8 @@ Plugin 'clinstid/papercolor-theme.vim'
 " Plugin 'tomasr/molokai'
 " Plugin 'sheerun/vim-wombat-scheme'
 Plugin 'joshdick/onedark.vim'
+Plugin 'chriskempson/base16-vim'
+Plugin 'morhetz/gruvbox'
 
 " syntax checking
 " Plugin 'scrooloose/syntastic'
@@ -72,6 +74,10 @@ Plugin 'mitsuhiko/vim-jinja'
 " syntax support for ansible dialect of yaml
 " Plugin 'chase/vim-ansible-yaml'
 Plugin 'pearofducks/ansible-vim'
+
+" syntax support for ABNF
+" Plugin 'vim-scripts/abnf'
+Plugin 'skilstak/vim-abnf-utf8'
 
 Plugin 'stephpy/vim-yaml'
 
@@ -120,7 +126,7 @@ Plugin 'Shougo/vimproc.vim'
 
 " Plugin 'airblade/vim-gitgutter'
 
-" Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'vim-scripts/confluencewiki.vim'
 
@@ -140,6 +146,8 @@ Plugin 'lifepillar/pgsql.vim'
 Plugin 'dylon/vim-antlr'
 
 Plugin 'isobit/vim-caddyfile'
+
+Plugin 'aklt/plantuml-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -259,31 +267,38 @@ if has("gui_running")
     endif
     " Dark colors
     set background=dark
-    colorscheme PaperColor
-    let g:airline_theme='serene'
+    colorscheme gruvbox
+    let g:airline_theme='gruvbox'
 
     " Light colors
     " set background=light
-    " colorscheme solarized
-    " let g:airline_theme='solarized'
+    " colorscheme PaperColor
+    " let g:airline_theme='papercolor'
 else
     set fillchars="vert:\│"
     " Dark colors
     set background=dark
-    let g:PaperColor_Theme_Options = {
-      \   'theme': {
-      \     'default': {
-      \       'transparent_background': 1
-      \     }
-      \   }
-      \ }
-    colorscheme PaperColor
-    let g:airline_theme='serene'
+    " let g:PaperColor_Theme_Options = {
+    "   \   'theme': {
+    "   \     'default': {
+    "   \       'transparent_background': 1
+    "   \     }
+    "   \   }
+    "   \ }
+    " let g:jellybeans_overrides = {
+                " \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+                " \}
+    let g:gruvbox_contrast_dark='hard'
+    colorscheme gruvbox
+    let g:airline_theme='gruvbox'
+
+    " gruvbox overrides
+    highlight Normal ctermbg=None
 
     " Light colors
     " set background=light
-    " colorscheme solarized
-    " let g:airline_theme='solarized'
+    " colorscheme PaperColor
+    " let g:airline_theme='papercolor'
 endif
 
 
@@ -411,7 +426,9 @@ set completeopt=longest,menuone,preview
 if has("mouse_sgr")
     set ttymouse=sgr
 else
-    set ttymouse=xterm2
+    if !has('nvim')
+        set ttymouse=xterm2
+    end
 end
 
 " disable folding for markdown files

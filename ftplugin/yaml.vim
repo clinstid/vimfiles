@@ -10,3 +10,4 @@ setlocal expandtab
 setlocal smarttab
 setlocal autoindent
 setlocal smartindent
+setlocal textwidth=100
