@@ -267,8 +267,8 @@ if has("gui_running")
     endif
     " Dark colors
     set background=dark
-    colorscheme gruvbox
-    let g:airline_theme='gruvbox'
+    colorscheme jellybeans
+    let g:airline_theme='jellybeans'
 
     " Light colors
     " set background=light
@@ -285,15 +285,15 @@ else
     "   \     }
     "   \   }
     "   \ }
-    " let g:jellybeans_overrides = {
-                " \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-                " \}
-    let g:gruvbox_contrast_dark='hard'
-    colorscheme gruvbox
-    let g:airline_theme='gruvbox'
+    let g:jellybeans_overrides = {
+                \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+                \}
+    " let g:gruvbox_contrast_dark='hard'
+    colorscheme jellybeans
+    let g:airline_theme='jellybeans'
 
     " gruvbox overrides
-    highlight Normal ctermbg=None
+    " highlight Normal ctermbg=None
 
     " Light colors
     " set background=light
