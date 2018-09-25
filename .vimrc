@@ -124,7 +124,7 @@ Plugin 'fatih/vim-go'
 " Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
 
-" Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 
 Plugin 'artur-shaik/vim-javacomplete2'
 
@@ -148,6 +148,8 @@ Plugin 'dylon/vim-antlr'
 Plugin 'isobit/vim-caddyfile'
 
 Plugin 'aklt/plantuml-syntax'
+
+Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -267,33 +269,50 @@ if has("gui_running")
     endif
     " Dark colors
     set background=dark
-    colorscheme jellybeans
-    let g:airline_theme='jellybeans'
+    " let g:PaperColor_Theme_Options = {
+      " \   'theme': {
+      " \     'default': {
+      " \       'transparent_background': 1
+      " \     }
+      " \   }
+      " \ }
+    " colorscheme PaperColor
+    " let g:airline_theme='serene'
 
     " Light colors
     " set background=light
     " colorscheme PaperColor
     " let g:airline_theme='papercolor'
+    " gruvbox overrides
+    let g:gruvbox_contrast_dark='hard'
+    highlight Normal ctermbg=None
+    colorscheme gruvbox
+    let g:airline_theme='gruvbox' gruvbox
 else
     set fillchars="vert:\│"
     " Dark colors
     set background=dark
     " let g:PaperColor_Theme_Options = {
-    "   \   'theme': {
-    "   \     'default': {
-    "   \       'transparent_background': 1
-    "   \     }
-    "   \   }
-    "   \ }
+      " \   'theme': {
+      " \     'default': {
+      " \       'transparent_background': 1
+      " \     }
+      " \   }
+      " \ }
+    " colorscheme PaperColor
+    " let g:airline_theme='serene'
+
     let g:jellybeans_overrides = {
                 \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
                 \}
-    " let g:gruvbox_contrast_dark='hard'
     colorscheme jellybeans
     let g:airline_theme='jellybeans'
 
     " gruvbox overrides
+    " let g:gruvbox_contrast_dark='hard'
+    " colorscheme gruvbox
     " highlight Normal ctermbg=None
+    " let g:airline_theme='gruvbox'
 
     " Light colors
     " set background=light
@@ -371,6 +390,9 @@ au BufNewFile,BufRead *Berksfile* set filetype=ruby
 " ANTLR files
 au BufRead,BufNewFile *.g set filetype=antlr3
 au BufRead,BufNewFile *.g4 set filetype=antlr4
+
+" Groovy files
+au BufRead,BufNewfile Jenkinsfile set filetype=groovy
 
 " look for a tags file
 set tags=tags;
@@ -531,4 +553,13 @@ nmap <leader>notdone :s/DONE/TODO/<cr>:set nohlsearch<cr>
 nmap <leader>done :s/TODO/DONE/<cr>:set nohlsearch<cr>
 nmap <leader>td o	- TODO
 
-set synmaxcol=300
+" set synmaxcol=300
+
+set ff=unix
+
+" ALE configuration
+let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_keep_list_window_open = 1
