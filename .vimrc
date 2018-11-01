@@ -284,10 +284,18 @@ if has("gui_running")
     " colorscheme PaperColor
     " let g:airline_theme='papercolor'
     " gruvbox overrides
-    let g:gruvbox_contrast_dark='hard'
-    highlight Normal ctermbg=None
-    colorscheme gruvbox
-    let g:airline_theme='gruvbox' gruvbox
+    " let g:gruvbox_contrast_dark='hard'
+    " highlight Normal ctermbg=None
+    " colorscheme gruvbox
+    " let g:airline_theme='gruvbox'
+
+    " jellybeans stuff
+    colorscheme jellybeans
+    let g:airline_theme='jellybeans'
+
+    " copy and paste to system clipboard
+    imap <C-S-v> <C-r>+
+    vmap <C-S-c> "+y
 else
     set fillchars="vert:\│"
     " Dark colors
@@ -341,9 +349,6 @@ set encoding=utf-8
 
 " most recently used
 map <leader>mr :MRU<cr>
-
-" copy to system clipboard
-vmap <C-S-c> "*y
 
 " toggle nerdtree
 map <leader>e :NERDTreeToggle<cr>
@@ -459,7 +464,8 @@ let g:vim_markdown_folding_disabled=1
 " Markdown autoformatting
 nmap <leader>tf :TableFormat<cr>
 
-" let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
 nmap <leader>i :IndentGuidesToggle<cr>
 nmap <leader>p :echo expand('%:p')<cr>
 
@@ -489,31 +495,6 @@ let g:ctrlp_show_hidden = 1
 set history=1001
 
 set noshowmode
-
-if !exists('g:airline_symbols')
-let g:airline_symbols = {}
-endif
-
-" unicode symbols
-" let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-" let g:airline_left_sep = '>'
-" let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-" let g:airline_right_sep = '<'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
 
 " For git commit messages always start at the first line
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
@@ -557,9 +538,11 @@ nmap <leader>td o	- TODO
 
 set ff=unix
 
+let g:airline_powerline_fonts = 1
+
 " ALE configuration
 let g:ale_completion_enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+" let g:ale_set_quickfix = 1
 let g:ale_keep_list_window_open = 1
