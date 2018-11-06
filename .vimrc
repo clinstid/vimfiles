@@ -139,7 +139,9 @@ Plugin 'Quramy/tsuquyomi'
 Plugin 'xolox/vim-notes'
 Plugin 'vim-scripts/utl.vim'
 
-Plugin 'jiangmiao/auto-pairs'
+" Pair brackets and quotes
+" Plugin 'jiangmiao/auto-pairs'
+Plugin 'Raimondi/delimitMate'
 
 Plugin 'lifepillar/pgsql.vim'
 
@@ -399,6 +401,10 @@ au BufRead,BufNewFile *.g4 set filetype=antlr4
 " Groovy files
 au BufRead,BufNewfile Jenkinsfile set filetype=groovy
 
+" Confluence/Jira files
+aut BufRead,BufNewfile *.jira set filetype=confluencewiki
+aut BufRead,BufNewfile *.confluence set filetype=confluencewiki
+
 " look for a tags file
 set tags=tags;
 
@@ -546,3 +552,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_set_loclist = 0
 " let g:ale_set_quickfix = 1
 let g:ale_keep_list_window_open = 1
+
+let delimitMate_nesting_quotes = ['"', "'", '`']
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
