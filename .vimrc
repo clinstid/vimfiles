@@ -87,6 +87,10 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 
+Plugin 'myhere/vim-nodejs-complete'
+Plugin 'moll/vim-node'
+" Plugin 'clinstid/tern_for_vim'
+
 Plugin 'elzr/vim-json'
 
 Plugin 'rking/ag.vim'
