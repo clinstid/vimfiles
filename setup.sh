@@ -9,3 +9,5 @@ if [ -d ~/.vim/bundle/vimproc.vim ]; then
     cd ~/.vim/bundle/vimproc.vim
     make
 fi
+
+mkdir -p ~/.vim/swapfiles ~/.vim/backup

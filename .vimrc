@@ -153,6 +153,9 @@ Plugin 'aklt/plantuml-syntax'
 
 Plugin 'w0rp/ale'
 
+" HOCON == typesafe config
+Plugin 'GEverding/vim-hocon'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -285,6 +288,7 @@ if has("gui_running")
     " set background=light
     " colorscheme PaperColor
     " let g:airline_theme='papercolor'
+
     " gruvbox overrides
     " let g:gruvbox_contrast_dark='hard'
     " highlight Normal ctermbg=None
@@ -312,6 +316,7 @@ else
     " colorscheme PaperColor
     " let g:airline_theme='serene'
 
+    " jellybeans settings
     let g:jellybeans_overrides = {
                 \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
                 \}
@@ -556,3 +561,6 @@ let g:ale_keep_list_window_open = 1
 let delimitMate_nesting_quotes = ['"', "'", '`']
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
+
+set directory=$HOME/.vim/swapfiles//
+set backupdir=$HOME/.vim/backup//
