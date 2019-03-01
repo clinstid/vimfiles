@@ -45,6 +45,7 @@ Plugin 'clinstid/papercolor-theme.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'morhetz/gruvbox'
+Plugin 'sickill/vim-monokai'
 
 " syntax checking
 " Plugin 'scrooloose/syntastic'
