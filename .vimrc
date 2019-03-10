@@ -541,7 +541,7 @@ nnoremap <leader>os :OpenSession<cr>
 " Insert the current date
 nmap <leader>id O<esc>"=strftime("# %b %d %Y\n")<CR>P<CR>i
 
-let g:notes_directories = ['~/Dropbox/Oracle/vim-notes']
+let g:notes_directories = ['~/.vim-notes']
 let g:notes_conceal_code = 0
 " let g:notes_smart_quotes = 0
 
