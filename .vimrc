@@ -1,169 +1,172 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin()
 
 " Git support
-Plugin 'tpope/vim-fugitive'
-Plugin 'jreybert/vimagit'
+Plug 'tpope/vim-fugitive'
+Plug 'jreybert/vimagit'
 
 " completion
-" Plugin 'ajh17/VimCompletesMe'
-Plugin 'ervandew/supertab'
+" Plug 'ajh17/VimCompletesMe'
+Plug 'ervandew/supertab'
 
 " Fuzzy file finding
-Plugin 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 " comment helper
-Plugin 'scrooloose/nerdcommenter'
-" Plugin 'clinstid/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
+" Plug 'clinstid/nerdcommenter'
 
-Plugin 'scrooloose/nerdtree'
-" Plugin 'Shougo/unite.vim'
+Plug 'scrooloose/nerdtree'
+" Plug 'Shougo/unite.vim'
 
 " file browser
-Plugin 'jlanzarotta/bufexplorer'
+Plug 'jlanzarotta/bufexplorer'
 
 " Perl support
-" Plugin 'vim-perl/vim-perl'
+" Plug 'vim-perl/vim-perl'
 
 " color schemes
-Plugin 'clinstid/jellybeans.vim'
-" Plugin 'clinstid/eink.vim'
-" Plugin 'clinstid/vylight.vim'
-Plugin 'clinstid/papercolor-theme.vim'
-" Plugin 'altercation/vim-colors-solarized'
-" Plugin 'notpratheek/vim-sol'
-" Plugin 'notpratheek/vim-luna'
-" Plugin 'sickill/vim-monokai'
-" Plugin 'tomasr/molokai'
-" Plugin 'sheerun/vim-wombat-scheme'
-Plugin 'joshdick/onedark.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'sickill/vim-monokai'
+Plug 'clinstid/jellybeans.vim'
+" Plug 'clinstid/eink.vim'
+" Plug 'clinstid/vylight.vim'
+Plug 'clinstid/papercolor-theme.vim'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'notpratheek/vim-sol'
+" Plug 'notpratheek/vim-luna'
+" Plug 'sickill/vim-monokai'
+" Plug 'tomasr/molokai'
+" Plug 'sheerun/vim-wombat-scheme'
+Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'sickill/vim-monokai'
 
 " syntax checking
-" Plugin 'scrooloose/syntastic'
-Plugin 'neomake/neomake'
-
-" most recently used files
-Plugin 'yegappan/mru'
+" Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 
 " Grep helper
-Plugin 'yegappan/grep'
+Plug 'yegappan/grep'
 
 " Ruby support
-" Plugin 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 
 " markdown support
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'mzlogin/vim-markdown-toc'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'mzlogin/vim-markdown-toc'
 
-Plugin 'davidhalter/jedi-vim'
-Plugin 'hynek/vim-python-pep8-indent'
+Plug 'davidhalter/jedi-vim'
+Plug 'hynek/vim-python-pep8-indent'
 
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
-Plugin 'mitsuhiko/vim-jinja'
+Plug 'mitsuhiko/vim-jinja'
 
 " syntax support for ansible dialect of yaml
-" Plugin 'chase/vim-ansible-yaml'
-Plugin 'pearofducks/ansible-vim'
+" Plug 'chase/vim-ansible-yaml'
+Plug 'pearofducks/ansible-vim'
 
 " syntax support for ABNF
-" Plugin 'vim-scripts/abnf'
-Plugin 'skilstak/vim-abnf-utf8'
+" Plug 'vim-scripts/abnf'
+Plug 'skilstak/vim-abnf-utf8'
 
-Plugin 'stephpy/vim-yaml'
+Plug 'stephpy/vim-yaml'
 
-Plugin 'groenewege/vim-less'
-Plugin 'hail2u/vim-css3-syntax'
+Plug 'groenewege/vim-less'
+Plug 'hail2u/vim-css3-syntax'
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
 
-Plugin 'myhere/vim-nodejs-complete'
-Plugin 'moll/vim-node'
-" Plugin 'clinstid/tern_for_vim'
+Plug 'myhere/vim-nodejs-complete'
+Plug 'moll/vim-node'
+" Plug 'clinstid/tern_for_vim'
 
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
-" Plugin 'medihack/sh.vim'
+" Plug 'medihack/sh.vim'
 
-" Plugin 'clinstid/vim-behave'
+" Plug 'clinstid/vim-behave'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-Plugin 'PotatoesMaster/i3-vim-syntax'
+Plug 'PotatoesMaster/i3-vim-syntax'
 
 " Snippets
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 " let g:UltiSnipsExpandTrigger="<s-tab>"
 " let g:UltiSnipsListSnippers="<c-tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" Plugin 'suan/vim-instant-markdown'
+" Plug 'suan/vim-instant-markdown'
 
-Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-session'
+Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-session'
 
-" Plugin 'vim-scripts/DrawIt'
-" Plugin 'Konfekt/FastFold'
-" Plugin 'tmhedberg/SimpylFold'
+" Plug 'vim-scripts/DrawIt'
+" Plug 'Konfekt/FastFold'
+" Plug 'tmhedberg/SimpylFold'
 
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
-" Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimproc.vim'
+" Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/vimproc.vim'
 
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
-Plugin 'artur-shaik/vim-javacomplete2'
+Plug 'artur-shaik/vim-javacomplete2'
 
-Plugin 'vim-scripts/confluencewiki.vim'
+Plug 'vim-scripts/confluencewiki.vim'
 
 " Typescript plugins
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
-" Plugin 'junegunn/fzf'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
-Plugin 'xolox/vim-notes'
-Plugin 'vim-scripts/utl.vim'
+Plug 'xolox/vim-notes'
+Plug 'vim-scripts/utl.vim'
 
 " Pair brackets and quotes
-" Plugin 'jiangmiao/auto-pairs'
-Plugin 'Raimondi/delimitMate'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 
-Plugin 'lifepillar/pgsql.vim'
+Plug 'lifepillar/pgsql.vim'
 
-Plugin 'dylon/vim-antlr'
+Plug 'dylon/vim-antlr'
 
-Plugin 'isobit/vim-caddyfile'
+Plug 'isobit/vim-caddyfile'
 
-Plugin 'aklt/plantuml-syntax'
+Plug 'aklt/plantuml-syntax'
 
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
+
+" Black python linter
+Plug 'ambv/black'
 
 " HOCON == typesafe config
-Plugin 'GEverding/vim-hocon'
+Plug 'GEverding/vim-hocon'
+
+Plug 'vim-scripts/mako.vim'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " always show status bar
 set laststatus=2
@@ -359,9 +362,6 @@ filetype plugin on
 
 set encoding=utf-8
 
-" most recently used
-map <leader>mr :MRU<cr>
-
 " toggle nerdtree
 map <leader>e :NERDTreeToggle<cr>
 
@@ -425,7 +425,11 @@ set tags=tags;
 " pymode options
 
 " disable colorcolumn for pymode
-let g:pymode_options_colorcolumn = 0
+" let g:pymode_options_colorcolumn = 0
+
+"Show ruler at 100 character limit (change as needed)
+set colorcolumn=120
+
 
 " disable folding
 let g:pymode_folding = 0
@@ -444,10 +448,6 @@ set ttyfast
 
 nmap <leader>sp :set paste<cr>
 nmap <leader>np :set nopaste<cr>
-
-nmap <leader>ic a Copyright (c) 2016 Dynamic Networks, Inc.
-
-set formatoptions=tcroqln
 
 " javascript libraries
 let g:used_javascript_libs = 'angularjs,jquery'
@@ -488,7 +488,7 @@ nmap <leader>p :echo expand('%:p')<cr>
 let g:pymode_rope_complete_on_dot = 0
 let python_highlight_all = 1
 
-set conceallevel=1
+set conceallevel=0
 let g:vim_markdown_conceal = 0
 
 nnoremap <BS> :noh<CR><BS>
@@ -569,3 +569,43 @@ let delimitMate_expand_cr = 1
 
 set directory=$HOME/.vim/swapfiles//
 set backupdir=$HOME/.vim/backup//
+
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore-dir javascript --ignore-dir node_modules --ignore DS_Store --ignore-dir git --ignore-dir bower_components --ignore-dir vendor --ignore-dir tmp --ignore-dir bash --ignore-dir cassandog --ignore-dir coverage'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+let g:black_linelength=120
+
+set rtp+=/usr/local/opt/fzf
+
+" Find note
+nmap <leader>fn :call fzf#run({'sink': 'e', 'dir': '~/Notes'})<cr>
+
+" Sync notes
+nmap <leader>sn :!sync_notes<cr>
+
+" fzf buffers
+nmap <leader>bf :Buffers<cr>
+
+" fzf History
+nmap <leader>h :History<cr>
+nmap <leader>mr :History<cr>
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nmap <C-p> :ProjectFiles<cr>
+nmap <leader>toc :GenTocGFM<cr>
+
+set formatoptions=tcroqln
+nnoremap <leader>k :exe 'Ag!' expand('<cword>')<cr>
