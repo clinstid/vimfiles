@@ -163,7 +163,10 @@ Plug 'ambv/black'
 " HOCON == typesafe config
 Plug 'GEverding/vim-hocon'
 
-Plug 'vim-scripts/mako.vim'
+Plug 'clinstid/mako.vim'
+
+" Live markdown preview
+Plug 'shime/vim-livedown'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -460,7 +463,7 @@ endif
 " Don't conceal quotes in JSON files
 let g:vim_json_syntax_conceal = 0
 
-" set cursorline
+set cursorline
 
 " vmap <C-c> "+y
 
