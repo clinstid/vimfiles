@@ -165,7 +165,9 @@ Plug 'aklt/plantuml-syntax'
 Plug 'w0rp/ale'
 
 " Black python linter
-Plug 'ambv/black'
+if v:version >= 700 && has('python3')
+    Plug 'ambv/black'
+endif
 
 " HOCON == typesafe config
 Plug 'GEverding/vim-hocon'
