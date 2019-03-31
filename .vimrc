@@ -138,7 +138,13 @@ Plug 'vim-scripts/confluencewiki.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 
+" fzf from homebrew
 Plug '/usr/local/opt/fzf'
+
+" fzf from git
+Plug '~/.fzf'
+
+" fzf actual vim plugin
 Plug 'junegunn/fzf.vim'
 
 Plug 'xolox/vim-notes'
