@@ -3,6 +3,7 @@ filetype off
 
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!mkdir -p ~/.vim/autoload'
     execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
@@ -137,7 +138,13 @@ Plug 'vim-scripts/confluencewiki.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 
+" fzf from homebrew
 Plug '/usr/local/opt/fzf'
+
+" fzf from git
+Plug '~/.fzf'
+
+" fzf actual vim plugin
 Plug 'junegunn/fzf.vim'
 
 Plug 'xolox/vim-notes'
@@ -158,7 +165,9 @@ Plug 'aklt/plantuml-syntax'
 Plug 'w0rp/ale'
 
 " Black python linter
-Plug 'ambv/black'
+if v:version >= 700 && has('python3')
+    Plug 'ambv/black'
+endif
 
 " HOCON == typesafe config
 Plug 'GEverding/vim-hocon'
