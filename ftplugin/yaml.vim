@@ -11,3 +11,4 @@ setlocal smarttab
 setlocal autoindent
 setlocal smartindent
 setlocal textwidth=100
+setlocal foldmethod=indent

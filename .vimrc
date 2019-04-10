@@ -584,7 +584,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-let g:black_linelength=120
+let g:black_linelength = 120
 
 set rtp+=/usr/local/opt/fzf
 
@@ -592,7 +592,7 @@ set rtp+=/usr/local/opt/fzf
 nmap <leader>fn :call fzf#run({'sink': 'e', 'dir': '~/Notes'})<cr>
 
 " Sync notes
-nmap <leader>sn :!sync_notes<cr>
+nmap <leader>sn :!~/bin/sync_notes<cr>
 
 " fzf buffers
 nmap <leader>bf :Buffers<cr>
