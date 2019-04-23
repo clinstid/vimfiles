@@ -621,3 +621,7 @@ nmap <leader>toc :GenTocGFM<cr>
 
 set formatoptions=tcroqln
 nnoremap <leader>k :exe 'Ag!' expand('<cword>')<cr>
+
+nnoremap <leader>nb Ofrom nose.tools import set_trace; set_trace()<esc>
+
+set foldlevel=99
