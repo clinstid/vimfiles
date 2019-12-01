@@ -5,3 +5,8 @@ setlocal textwidth=120
 setlocal smarttab
 setlocal expandtab
 " setlocal foldmethod=indent
+
+nmap <leader>bp Oimport pdb; pdb.set_trace()<esc>
+nmap <leader>tbp Ofrom nose.tools import set_trace; set_trace()<esc>
+
+setlocal wrap

@@ -6,6 +6,7 @@ let b:did_ftplugin = 1
 
 " autocmd BufWritePre *.go :GoImports
 nmap <leader>gi :GoImports<cr>
+nmap <leader>gf :GoFmt<cr>
 
 setlocal shiftwidth=4
 setlocal tabstop=4
