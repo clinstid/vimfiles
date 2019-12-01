@@ -11,27 +11,18 @@ call plug#begin()
 
 " Git support
 Plug 'tpope/vim-fugitive'
-Plug 'jreybert/vimagit'
+Plug 'tpope/vim-rhubarb'
 
 " completion
-" Plug 'ajh17/VimCompletesMe'
 Plug 'ervandew/supertab'
-
-" Fuzzy file finding
-" Plug 'ctrlpvim/ctrlp.vim'
 
 " comment helper
 Plug 'scrooloose/nerdcommenter'
-" Plug 'clinstid/nerdcommenter'
 
 Plug 'scrooloose/nerdtree'
-" Plug 'Shougo/unite.vim'
 
 " file browser
 Plug 'jlanzarotta/bufexplorer'
-
-" Perl support
-" Plug 'vim-perl/vim-perl'
 
 " color schemes
 Plug 'clinstid/jellybeans.vim'
@@ -48,13 +39,14 @@ Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'sickill/vim-monokai'
+" Plug 'flazz/vim-colorschemes'
 
 " syntax checking
 " Plug 'scrooloose/syntastic'
 Plug 'neomake/neomake'
 
 " Grep helper
-Plug 'yegappan/grep'
+" Plug 'yegappan/grep'
 
 " Ruby support
 " Plug 'vim-ruby/vim-ruby'
@@ -64,8 +56,10 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'mzlogin/vim-markdown-toc'
 
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
+
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 Plug 'majutsushi/tagbar'
 
@@ -94,6 +88,7 @@ Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 
 Plug 'rking/ag.vim'
+Plug 'Chun-Yang/vim-action-ag'
 
 " Plug 'medihack/sh.vim'
 
@@ -101,6 +96,7 @@ Plug 'rking/ag.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
 
 Plug 'PotatoesMaster/i3-vim-syntax'
 
@@ -115,7 +111,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 " Plug 'suan/vim-instant-markdown'
 
 Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-session'
+Plug 'xolox/vim-session'
 
 " Plug 'vim-scripts/DrawIt'
 " Plug 'Konfekt/FastFold'
@@ -164,24 +160,41 @@ Plug 'aklt/plantuml-syntax'
 
 Plug 'w0rp/ale'
 
+Plug 'alok/notational-fzf-vim'
+
 " Black python linter
 if v:version >= 700 && has('python3')
     Plug 'ambv/black'
 endif
 
 " HOCON == typesafe config
-Plug 'GEverding/vim-hocon'
+" Plug 'GEverding/vim-hocon'
 
 Plug 'clinstid/mako.vim'
 
 " Live markdown preview
 Plug 'shime/vim-livedown'
 
+Plug 'tpope/vim-surround'
+
+Plug 'aserebryakov/vim-todo-lists'
+
+Plug 'vim-scripts/haproxy'
+
+Plug 'junegunn/goyo.vim'
+
+Plug 'craigemery/vim-autotag'
+
+Plug 'dkarter/bullets.vim'
+
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
 " always show status bar
 set laststatus=2
+set statusline=%F%=%{fugitive#statusline()}\ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
+hi StatusLine ctermbg=blue ctermfg=darkyellow
 
 " show stats in the command line
 set ruler
@@ -316,8 +329,14 @@ if has("gui_running")
     " let g:airline_theme='gruvbox'
 
     " jellybeans stuff
+    let g:jellybeans_overrides = {
+                \    'background': { 'guibg': '000000' },
+                \}
     colorscheme jellybeans
     let g:airline_theme='jellybeans'
+
+    " colorscheme base16-black-metal
+    " let g:airline_theme='serene'
 
     " copy and paste to system clipboard
     imap <C-S-v> <C-r>+
@@ -342,6 +361,7 @@ else
                 \}
     colorscheme jellybeans
     let g:airline_theme='jellybeans'
+    " let g:airline_theme='serene'
 
     " gruvbox overrides
     " let g:gruvbox_contrast_dark='hard'
@@ -353,6 +373,10 @@ else
     " set background=light
     " colorscheme PaperColor
     " let g:airline_theme='papercolor'
+
+    " copy and paste to system clipboard
+    imap <C-S-v> <C-r>+
+    vmap <C-S-c> "+y
 endif
 
 
@@ -398,8 +422,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 " autocmd BufWritePre *.rb :%s/\s\+$//e
 " autocmd BufWritePre *.js :%s/\s\+$//e
 
-" mc files are mason
-au BufNewFile,BufRead *.mc set filetype=mason
+" mako files are mako
+au BufNewFile,BufRead *.mako set filetype=mako
 
 " ng-template files are html/angularjs
 au BufNewFile,BufRead *.ng-template set filetype=html
@@ -427,6 +451,9 @@ au BufRead,BufNewfile Jenkinsfile set filetype=groovy
 aut BufRead,BufNewfile *.jira set filetype=confluencewiki
 aut BufRead,BufNewfile *.confluence set filetype=confluencewiki
 
+" typescript files
+aut BufRead,BufNewfile *.tsx set filetype=typescript
+
 " look for a tags file
 set tags=tags;
 
@@ -440,7 +467,7 @@ set tags=tags;
 " let g:pymode_options_colorcolumn = 0
 
 "Show ruler at 100 character limit (change as needed)
-set colorcolumn=120
+" set colorcolumn=120
 
 
 " disable folding
@@ -448,6 +475,9 @@ let g:pymode_folding = 0
 
 let g:pymode_options_max_line_length = 120
 let g:pymode_lint_ignore = "C901"
+let g:pymode_virtualenv = 1
+let g:pymode_options = 0
+
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 
 " set spell
@@ -472,7 +502,7 @@ endif
 " Don't conceal quotes in JSON files
 let g:vim_json_syntax_conceal = 0
 
-set cursorline
+" set cursorline
 
 " vmap <C-c> "+y
 
@@ -486,8 +516,13 @@ else
     end
 end
 
+set conceallevel=0
+
 " disable folding for markdown files
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_conceal = 0
 
 " Markdown autoformatting
 nmap <leader>tf :TableFormat<cr>
@@ -497,18 +532,15 @@ let g:indent_guides_guide_size = 1
 nmap <leader>i :IndentGuidesToggle<cr>
 nmap <leader>p :echo expand('%:p')<cr>
 
-let g:pymode_rope_complete_on_dot = 0
 let python_highlight_all = 1
 
-set conceallevel=0
-let g:vim_markdown_conceal = 0
 
 nnoremap <BS> :noh<CR><BS>
 
 " jedi configuration
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#auto_vim_configuration = 0
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#popup_select_first = 0
+" let g:jedi#auto_vim_configuration = 0
 
 " \tb - Toggle tagbar
 nnoremap <leader>tb :TagbarToggle<cr>
@@ -539,7 +571,6 @@ let g:instant_markdown_slow = 1
 " let g:SimpylFold_fold_import = 0
 " set fdc=0
 
-let g:vim_markdown_new_list_item_indent = 2
 
 " autocmd! BufWritePost * Neomake
 
@@ -553,6 +584,9 @@ nnoremap <leader>os :OpenSession<cr>
 
 " Insert the current date
 nmap <leader>id O<esc>"=strftime("# %b %d %Y\n")<CR>P<CR>i
+
+nnoremap <silent> <leader>nv :NV<cr>
+let g:nv_search_paths = ['~/Notes']
 
 let g:notes_directories = ['~/.vim-notes']
 let g:notes_conceal_code = 0
@@ -625,3 +659,22 @@ nnoremap <leader>k :exe 'Ag!' expand('<cword>')<cr>
 nnoremap <leader>nb Ofrom nose.tools import set_trace; set_trace()<esc>
 
 set foldlevel=99
+
+nmap <leader>mp :LivedownPreview<cr>
+
+set updatetime=500
+
+nmap <leader>te :terminal<cr>
+
+let g:VimTodoListsDatesEnabled = 1
+
+set regexpengine=1
+
+" Start ag search from project root
+let g:ag_working_path_mode="r"
+
+let g:goyo_width = '120'
+let g:goyo_height = '90%'
+nnoremap <leader>go :Goyo<cr>
+
+let g:airline#extensions#whitespace#enabled=0
