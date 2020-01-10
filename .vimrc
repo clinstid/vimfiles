@@ -382,6 +382,7 @@ endif
 
 " show line numbers
 set number
+set relativenumber
 
 " set title in xterm
 set title
@@ -502,7 +503,8 @@ endif
 " Don't conceal quotes in JSON files
 let g:vim_json_syntax_conceal = 0
 
-" set cursorline
+" Highlight current line
+set cursorline
 
 " vmap <C-c> "+y
 
@@ -545,7 +547,7 @@ nnoremap <BS> :noh<CR><BS>
 " \tb - Toggle tagbar
 nnoremap <leader>tb :TagbarToggle<cr>
 
-set scrolloff=1
+set scrolloff=999
 set sidescrolloff=5
 set display+=lastline
 
@@ -678,3 +680,6 @@ let g:goyo_height = '90%'
 nnoremap <leader>go :Goyo<cr>
 
 let g:airline#extensions#whitespace#enabled=0
+
+nnoremap <leader>nwl :e ~/Notes/worklog.md<cr>:2<cr>:pu=strftime('## %F')<cr>o
+nnoremap <leader>wl :e ~/Notes/worklog.md<cr>:4<cr>
