@@ -16,3 +16,6 @@ setlocal autoindent
 setlocal smartindent
 
 let b:ale_linters = ['gofmt', 'golint', 'govet', 'golangserver']
+
+" vim-go configuration
+let g:go_fmt_autosave = 1

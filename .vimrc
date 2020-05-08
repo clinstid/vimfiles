@@ -14,7 +14,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " completion
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 " comment helper
 Plug 'scrooloose/nerdcommenter'
@@ -28,22 +28,22 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'clinstid/jellybeans.vim'
 " Plug 'clinstid/eink.vim'
 " Plug 'clinstid/vylight.vim'
-Plug 'clinstid/papercolor-theme.vim'
+" Plug 'clinstid/papercolor-theme.vim'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'notpratheek/vim-sol'
 " Plug 'notpratheek/vim-luna'
 " Plug 'sickill/vim-monokai'
 " Plug 'tomasr/molokai'
 " Plug 'sheerun/vim-wombat-scheme'
-Plug 'joshdick/onedark.vim'
-Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
-Plug 'sickill/vim-monokai'
+" Plug 'joshdick/onedark.vim'
+" Plug 'chriskempson/base16-vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'sickill/vim-monokai'
 " Plug 'flazz/vim-colorschemes'
 
 " syntax checking
 " Plug 'scrooloose/syntastic'
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 
 " Grep helper
 " Plug 'yegappan/grep'
@@ -59,7 +59,7 @@ Plug 'mzlogin/vim-markdown-toc'
 " Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
 
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 Plug 'majutsushi/tagbar'
 
@@ -87,8 +87,8 @@ Plug 'moll/vim-node'
 
 Plug 'elzr/vim-json'
 
-Plug 'rking/ag.vim'
-Plug 'Chun-Yang/vim-action-ag'
+" Plug 'rking/ag.vim'
+" Plug 'Chun-Yang/vim-action-ag'
 
 " Plug 'medihack/sh.vim'
 
@@ -98,7 +98,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim'
 
-Plug 'PotatoesMaster/i3-vim-syntax'
+" Plug 'PotatoesMaster/i3-vim-syntax'
 
 " Snippets
 " Plug 'SirVer/ultisnips'
@@ -110,8 +110,8 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 
 " Plug 'suan/vim-instant-markdown'
 
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-session'
 
 " Plug 'vim-scripts/DrawIt'
 " Plug 'Konfekt/FastFold'
@@ -121,12 +121,14 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'fatih/vim-go'
 
+Plug 'towolf/vim-helm'
+
 " Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/vimproc.vim'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'artur-shaik/vim-javacomplete2'
+" Plug 'artur-shaik/vim-javacomplete2'
 
 Plug 'vim-scripts/confluencewiki.vim'
 
@@ -143,8 +145,8 @@ Plug '~/.fzf'
 " fzf actual vim plugin
 Plug 'junegunn/fzf.vim'
 
-Plug 'xolox/vim-notes'
-Plug 'vim-scripts/utl.vim'
+" Plug 'xolox/vim-notes'
+" Plug 'vim-scripts/utl.vim'
 
 " Pair brackets and quotes
 " Plug 'jiangmiao/auto-pairs'
@@ -154,18 +156,17 @@ Plug 'lifepillar/pgsql.vim'
 
 Plug 'dylon/vim-antlr'
 
-Plug 'isobit/vim-caddyfile'
+" Plug 'isobit/vim-caddyfile'
 
 Plug 'aklt/plantuml-syntax'
 
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'alok/notational-fzf-vim'
 
-" Black python linter
-if v:version >= 700 && has('python3')
-    Plug 'ambv/black'
-endif
+Plug 'psf/black', { 'branch': 'master' }
+
 
 " HOCON == typesafe config
 " Plug 'GEverding/vim-hocon'
@@ -183,10 +184,15 @@ Plug 'vim-scripts/haproxy'
 
 Plug 'junegunn/goyo.vim'
 
-Plug 'craigemery/vim-autotag'
-
 Plug 'dkarter/bullets.vim'
 
+" Bazel plugins
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
+
+Plug 'clinstid/nginx.vim'
+
+Plug 'tweekmonster/startuptime.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -333,7 +339,8 @@ if has("gui_running")
                 \    'background': { 'guibg': '000000' },
                 \}
     colorscheme jellybeans
-    let g:airline_theme='jellybeans'
+    " let g:airline_theme='jellybeans'
+    let g:airline_theme='serene'
 
     " colorscheme base16-black-metal
     " let g:airline_theme='serene'
@@ -382,7 +389,7 @@ endif
 
 " show line numbers
 set number
-set relativenumber
+" set relativenumber
 
 " set title in xterm
 set title
@@ -505,6 +512,7 @@ let g:vim_json_syntax_conceal = 0
 
 " Highlight current line
 set cursorline
+set cursorcolumn
 
 " vmap <C-c> "+y
 
@@ -529,7 +537,7 @@ let g:vim_markdown_conceal = 0
 " Markdown autoformatting
 nmap <leader>tf :TableFormat<cr>
 
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_guide_size = 1
 nmap <leader>i :IndentGuidesToggle<cr>
 nmap <leader>p :echo expand('%:p')<cr>
@@ -547,7 +555,7 @@ nnoremap <BS> :noh<CR><BS>
 " \tb - Toggle tagbar
 nnoremap <leader>tb :TagbarToggle<cr>
 
-set scrolloff=999
+set scrolloff=0
 set sidescrolloff=5
 set display+=lastline
 
@@ -630,6 +638,7 @@ if executable('ag')
 endif
 
 let g:black_linelength = 120
+let g:black_virtualenv = "~/.black_virtualenv"
 
 set rtp+=/usr/local/opt/fzf
 
@@ -646,17 +655,34 @@ nmap <leader>bf :Buffers<cr>
 nmap <leader>h :History<cr>
 nmap <leader>mr :History<cr>
 
+" fzf Search
+nmap <leader>rg :Rg<cr>
+nmap <leader>ag :Ag<cr>
+
+" fzf Filetypes
+nmap <leader>ft :Filetypes<cr>
+
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
 command! ProjectFiles execute 'Files' s:find_git_root()
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=* GRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': s:find_git_root()}), <bang>0)
+
 nmap <C-p> :ProjectFiles<cr>
 nmap <leader>toc :GenTocGFM<cr>
 
 set formatoptions=tcroqln
 nnoremap <leader>k :exe 'Ag!' expand('<cword>')<cr>
+cnoreabbre ag Ag
 
 nnoremap <leader>nb Ofrom nose.tools import set_trace; set_trace()<esc>
 
@@ -664,7 +690,7 @@ set foldlevel=99
 
 nmap <leader>mp :LivedownPreview<cr>
 
-set updatetime=500
+set updatetime=300
 
 nmap <leader>te :terminal<cr>
 
@@ -683,3 +709,7 @@ let g:airline#extensions#whitespace#enabled=0
 
 nnoremap <leader>nwl :e ~/Notes/worklog.md<cr>:2<cr>:pu=strftime('## %F')<cr>o
 nnoremap <leader>wl :e ~/Notes/worklog.md<cr>:4<cr>
+
+source ~/.vimrc-coc
+
+let g:python3_host_prog = '/Users/chris.linstid/.pyenv/versions/py3nvim/bin/python3'
