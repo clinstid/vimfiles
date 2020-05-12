@@ -347,6 +347,9 @@ if has("gui_running")
     " colorscheme base16-black-metal
     " let g:airline_theme='serene'
 
+    " colorscheme base16-black-metal
+    " let g:airline_theme='serene'
+
     " copy and paste to system clipboard
     imap <C-S-v> <C-r>+
     vmap <C-S-c> "+y
