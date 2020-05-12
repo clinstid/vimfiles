@@ -26,6 +26,8 @@ Plug 'jlanzarotta/bufexplorer'
 
 " color schemes
 Plug 'clinstid/jellybeans.vim'
+" Plug 'yuqio/vim-darkspace'
+Plug 'clinstid/vim-darkspace'
 " Plug 'clinstid/eink.vim'
 " Plug 'clinstid/vylight.vim'
 " Plug 'clinstid/papercolor-theme.vim'
@@ -349,6 +351,7 @@ if has("gui_running")
     imap <C-S-v> <C-r>+
     vmap <C-S-c> "+y
 else
+    set termguicolors
     set fillchars="vert:\│"
     " Dark colors
     set background=dark
@@ -363,12 +366,18 @@ else
     " let g:airline_theme='serene'
 
     " jellybeans settings
-    let g:jellybeans_overrides = {
-                \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-                \}
-    colorscheme jellybeans
-    let g:airline_theme='jellybeans'
+    " let g:jellybeans_overrides = {
+                " \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+                " \}
+    " colorscheme jellybeans
+    " let g:airline_theme='jellybeans'
     " let g:airline_theme='serene'
+
+    " darkspace
+    let g:darkspace_italics = 1
+    colorscheme darkspace
+    let g:airline_theme='darkspace'
+    " let g:lightline.colorscheme = 'darkspace'
 
     " gruvbox overrides
     " let g:gruvbox_contrast_dark='hard'
