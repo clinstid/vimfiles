@@ -5,3 +5,6 @@ mkdir -p ~/.vim/bundle
 ln -svf $(pwd)/ftplugin ~/.vim/ftplugin
 vim +PlugInstall +qall
 mkdir -p ~/.vim/swapfiles ~/.vim/backup
+mkdir -p ~/.config/nvim
+cp init.vim ~/.config/nvim
+mkdir -p ~/Notes
