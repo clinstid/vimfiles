@@ -731,4 +731,4 @@ nnoremap <leader>wl :e ~/Notes/worklog.md<cr>:4<cr>
 
 source ~/.vimrc-coc
 
-let g:python3_host_prog = '/Users/chris.linstid/.pyenv/versions/py3nvim/bin/python3'
+" let g:python3_host_prog = '/Users/chris.linstid/.pyenv/versions/py3nvim/bin/python3'
