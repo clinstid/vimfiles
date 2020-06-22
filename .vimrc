@@ -21,6 +21,8 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'scrooloose/nerdtree'
 
+Plug 'ryanoasis/vim-devicons'
+
 " file browser
 Plug 'jlanzarotta/bufexplorer'
 
@@ -308,7 +310,7 @@ if has("gui_running")
     autocmd GUIEnter * set visualbell t_vb=
     set guicursor=a:blinkon0
     if has("gui_macvim")
-        set guifont=Hack\ Regular:h12
+        set guifont=Hack\ Nerd\ Font:h12
     else
         " set guifont=Ubuntu\ Mono\ 11
         set guifont=Hack\ 9
@@ -337,12 +339,17 @@ if has("gui_running")
     " let g:airline_theme='gruvbox'
 
     " jellybeans stuff
-    let g:jellybeans_overrides = {
-                \    'background': { 'guibg': '000000' },
-                \}
-    colorscheme jellybeans
+    " let g:jellybeans_overrides = {
+                " \    'background': { 'guibg': '000000' },
+                " \}
+    " colorscheme jellybeans
     " let g:airline_theme='jellybeans'
-    let g:airline_theme='serene'
+    " let g:airline_theme='serene'
+
+    " darkspace
+    let g:darkspace_italics = 1
+    colorscheme darkspace
+    let g:airline_theme='darkspace'
 
     " colorscheme base16-black-metal
     " let g:airline_theme='serene'
@@ -643,7 +650,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore-dir javascript --ignore-dir node_modules --ignore DS_Store --ignore-dir git --ignore-dir bower_components --ignore-dir vendor --ignore-dir tmp --ignore-dir bash --ignore-dir cassandog --ignore-dir coverage'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore javascript --ignore node_modules --ignore DS_Store --ignore git --ignore bower_components --ignore vendor --ignore tmp --ignore bash --ignore cassandog --ignore coverage --ignore bazel-\* --ignore'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
