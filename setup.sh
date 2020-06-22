@@ -2,6 +2,7 @@
 ln -svf $(pwd)/.vimrc ~/.vimrc
 ln -svf $(pwd)/.vimrc-coc ~/.vimrc-coc
 mkdir -p ~/.vim/bundle
+rm -rvf ~/.vim/ftplugin
 ln -svf $(pwd)/ftplugin ~/.vim/ftplugin
 vim +PlugInstall +qall
 mkdir -p ~/.vim/swapfiles ~/.vim/backup
