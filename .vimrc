@@ -12,6 +12,7 @@ call plug#begin()
 " Git support
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'rhysd/git-messenger.vim'
 
 " completion
 " Plug 'ervandew/supertab'
@@ -293,7 +294,7 @@ set wildmode=longest,list,full
 
 " GUI specific options
 if has("gui_running")
-    set ghr=0
+    " set ghr=0
     " window size
     " set columns=80
     " set lines=40
@@ -310,10 +311,10 @@ if has("gui_running")
     autocmd GUIEnter * set visualbell t_vb=
     set guicursor=a:blinkon0
     if has("gui_macvim")
-        set guifont=Hack\ Nerd\ Font:h12
+        " set guifont=Hack\ Nerd\ Font:h12
     else
         " set guifont=Ubuntu\ Mono\ 11
-        set guifont=Hack\ 9
+        " set guifont=Hack\ 9
     endif
     " Dark colors
     set background=dark
@@ -574,7 +575,7 @@ nnoremap <BS> :noh<CR><BS>
 " \tb - Toggle tagbar
 nnoremap <leader>tb :TagbarToggle<cr>
 
-set scrolloff=0
+set scrolloff=5
 set sidescrolloff=5
 set display+=lastline
 
@@ -657,7 +658,7 @@ if executable('ag')
 endif
 
 let g:black_linelength = 120
-let g:black_virtualenv = "~/.black_virtualenv"
+" let g:black_virtualenv = "~/.black_virtualenv"
 
 set rtp+=/usr/local/opt/fzf
 
