@@ -199,6 +199,8 @@ Plug 'clinstid/nginx.vim'
 
 Plug 'tweekmonster/startuptime.vim'
 
+Plug 'rust-lang/rust.vim'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
