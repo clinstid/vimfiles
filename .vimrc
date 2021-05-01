@@ -12,15 +12,11 @@ call plug#begin()
 " Git support
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'rhysd/git-messenger.vim'
 
-" completion
-" Plug 'ervandew/supertab'
+Plug 'tpope/vim-abolish'
 
 " comment helper
 Plug 'scrooloose/nerdcommenter'
-
-Plug 'scrooloose/nerdtree'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -29,32 +25,10 @@ Plug 'jlanzarotta/bufexplorer'
 
 " color schemes
 Plug 'clinstid/jellybeans.vim'
-" Plug 'yuqio/vim-darkspace'
 Plug 'clinstid/vim-darkspace'
-" Plug 'clinstid/eink.vim'
-" Plug 'clinstid/vylight.vim'
-" Plug 'clinstid/papercolor-theme.vim'
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'notpratheek/vim-sol'
-" Plug 'notpratheek/vim-luna'
-" Plug 'sickill/vim-monokai'
-" Plug 'tomasr/molokai'
-" Plug 'sheerun/vim-wombat-scheme'
-" Plug 'joshdick/onedark.vim'
-" Plug 'chriskempson/base16-vim'
-" Plug 'morhetz/gruvbox'
-" Plug 'sickill/vim-monokai'
-" Plug 'flazz/vim-colorschemes'
-
-" syntax checking
-" Plug 'scrooloose/syntastic'
-" Plug 'neomake/neomake'
-
-" Grep helper
-" Plug 'yegappan/grep'
-
-" Ruby support
-" Plug 'vim-ruby/vim-ruby'
+Plug 'clinstid/vylight.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasiser/vim-code-dark'
 
 " markdown support
 Plug 'godlygeek/tabular'
@@ -64,14 +38,11 @@ Plug 'mzlogin/vim-markdown-toc'
 " Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
 
-" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
 Plug 'majutsushi/tagbar'
 
-Plug 'mitsuhiko/vim-jinja'
+"Plug 'mitsuhiko/vim-jinja'
 
 " syntax support for ansible dialect of yaml
-" Plug 'chase/vim-ansible-yaml'
 Plug 'pearofducks/ansible-vim'
 
 " syntax support for ABNF
@@ -88,39 +59,15 @@ Plug 'othree/javascript-libraries-syntax.vim'
 
 Plug 'myhere/vim-nodejs-complete'
 Plug 'moll/vim-node'
-" Plug 'clinstid/tern_for_vim'
 
 Plug 'elzr/vim-json'
-
-" Plug 'rking/ag.vim'
-" Plug 'Chun-Yang/vim-action-ag'
-
-" Plug 'medihack/sh.vim'
 
 " Plug 'clinstid/vim-behave'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
 
-" Plug 'PotatoesMaster/i3-vim-syntax'
-
-" Snippets
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-" let g:UltiSnipsExpandTrigger="<s-tab>"
-" let g:UltiSnipsListSnippers="<c-tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-" Plug 'suan/vim-instant-markdown'
-
-" Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-session'
-
-" Plug 'vim-scripts/DrawIt'
-" Plug 'Konfekt/FastFold'
-" Plug 'tmhedberg/SimpylFold'
+Plug 'cespare/vim-toml'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -128,21 +75,21 @@ Plug 'fatih/vim-go'
 
 Plug 'towolf/vim-helm'
 
-" Plug 'Shougo/vimshell.vim'
-Plug 'Shougo/vimproc.vim'
+"Plug 'Shougo/vimproc.vim'
 
 Plug 'airblade/vim-gitgutter'
 
 " Plug 'artur-shaik/vim-javacomplete2'
 
-Plug 'vim-scripts/confluencewiki.vim'
+"Plug 'vim-scripts/confluencewiki.vim'
 
 " Typescript plugins
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'peitalin/vim-jsx-typescript'
 
 " fzf from homebrew
-Plug '/usr/local/opt/fzf'
+" Plug '/usr/local/opt/fzf'
 
 " fzf from git
 Plug '~/.fzf'
@@ -153,13 +100,11 @@ Plug 'junegunn/fzf.vim'
 " Plug 'xolox/vim-notes'
 " Plug 'vim-scripts/utl.vim'
 
-" Pair brackets and quotes
-" Plug 'jiangmiao/auto-pairs'
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 
 Plug 'lifepillar/pgsql.vim'
 
-Plug 'dylon/vim-antlr'
+"Plug 'dylon/vim-antlr'
 
 " Plug 'isobit/vim-caddyfile'
 
@@ -170,7 +115,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'alok/notational-fzf-vim'
 
-Plug 'psf/black', { 'branch': 'master' }
+" Plug 'psf/black', { 'branch': 'master' }
+Plug 'psf/black', { 'tag': '19.10b0' }
 
 
 " HOCON == typesafe config
@@ -181,15 +127,18 @@ Plug 'clinstid/mako.vim'
 " Live markdown preview
 Plug 'shime/vim-livedown'
 
-Plug 'tpope/vim-surround'
+" Pair brackets and quotes
+" Plug 'tpope/vim-surround'
+"Plug 'jiangmiao/auto-pairs'
+"Plug 'tpope/vim-endwise'
 
-Plug 'aserebryakov/vim-todo-lists'
+" Plug 'aserebryakov/vim-todo-lists'
 
 Plug 'vim-scripts/haproxy'
 
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 
-Plug 'dkarter/bullets.vim'
+" Plug 'dkarter/bullets.vim'
 
 " Bazel plugins
 Plug 'google/vim-maktaba'
@@ -197,7 +146,21 @@ Plug 'bazelbuild/vim-bazel'
 
 Plug 'clinstid/nginx.vim'
 
-Plug 'tweekmonster/startuptime.vim'
+"Plug 'tweekmonster/startuptime.vim'
+
+"Plug 'mogelbrod/vim-jsonpath'
+
+Plug 'hashivim/vim-terraform'
+
+"Plug 'will133/vim-dirdiff'
+
+Plug 'jvirtanen/vim-hcl'
+
+Plug 'dbakker/vim-projectroot'
+
+Plug 'preservim/nerdtree'
+
+" Plug 'wellle/context.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -224,6 +187,7 @@ set backspace=indent,eol,start
 
 " Automatically indent on new lines
 set autoindent
+set smartindent
 
 " Copy the indentation of the previous line if auto indent doesn't know what to do
 set copyindent
@@ -311,10 +275,10 @@ if has("gui_running")
     autocmd GUIEnter * set visualbell t_vb=
     set guicursor=a:blinkon0
     if has("gui_macvim")
-        " set guifont=Hack\ Nerd\ Font:h12
+        set guifont=Hack\ Nerd\ Font:h12
     else
         " set guifont=Ubuntu\ Mono\ 11
-        " set guifont=Hack\ 9
+        set guifont=Hack\ 9
     endif
     " Dark colors
     set background=dark
@@ -340,9 +304,9 @@ if has("gui_running")
     " let g:airline_theme='gruvbox'
 
     " jellybeans stuff
-    " let g:jellybeans_overrides = {
-                " \    'background': { 'guibg': '000000' },
-                " \}
+    let g:jellybeans_overrides = {
+                \    'background': { 'guibg': '000000' },
+                \}
     " colorscheme jellybeans
     " let g:airline_theme='jellybeans'
     " let g:airline_theme='serene'
@@ -350,7 +314,7 @@ if has("gui_running")
     " darkspace
     let g:darkspace_italics = 1
     colorscheme darkspace
-    let g:airline_theme='darkspace'
+    let g:airline_theme='base16'
 
     " colorscheme base16-black-metal
     " let g:airline_theme='serene'
@@ -374,12 +338,12 @@ else
       " \   }
       " \ }
     " colorscheme PaperColor
-    " let g:airline_theme='serene'
 
     " jellybeans settings
     " let g:jellybeans_overrides = {
-                " \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-                " \}
+    " \    'background': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
+    " \}
+
     " colorscheme jellybeans
     " let g:airline_theme='jellybeans'
     " let g:airline_theme='serene'
@@ -433,7 +397,7 @@ map <leader>e :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 
 " Add a space after comments
-let NERDSpaceDelims=1
+" let NERDSpaceDelims=1
 
 " remove trailing whitespace
 map <leader>w :%s/\s\+$//e<cr>
@@ -442,6 +406,7 @@ map <leader>w :%s/\s\+$//e<cr>
 map <leader>q :set nohlsearch<cr>
 
 autocmd BufEnter * silent! lcd %:p:h
+set autochdir
 
 " remote whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -550,7 +515,7 @@ set conceallevel=0
 
 " disable folding for markdown files
 let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_auto_insert_bullets = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_conceal = 0
 
@@ -578,9 +543,6 @@ nnoremap <leader>tb :TagbarToggle<cr>
 set scrolloff=5
 set sidescrolloff=5
 set display+=lastline
-
-" Make sure ctrlp shows hidden files
-let g:ctrlp_show_hidden = 1
 
 set history=1001
 
@@ -646,19 +608,9 @@ let delimitMate_expand_cr = 1
 set directory=$HOME/.vim/swapfiles//
 set backupdir=$HOME/.vim/backup//
 
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore javascript --ignore node_modules --ignore DS_Store --ignore git --ignore bower_components --ignore vendor --ignore tmp --ignore bash --ignore cassandog --ignore coverage --ignore bazel-\* --ignore'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+set wildignore+=bazel-bin/*,bazel-out/*
 
 let g:black_linelength = 120
-" let g:black_virtualenv = "~/.black_virtualenv"
 
 set rtp+=/usr/local/opt/fzf
 
@@ -675,10 +627,6 @@ nmap <leader>bf :Buffers<cr>
 nmap <leader>h :History<cr>
 nmap <leader>mr :History<cr>
 
-" fzf Search
-nmap <leader>rg :Rg<cr>
-nmap <leader>ag :Ag<cr>
-
 " fzf Filetypes
 nmap <leader>ft :Filetypes<cr>
 
@@ -686,23 +634,31 @@ function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
-command! ProjectFiles execute 'Files' s:find_git_root()
+function Light()
+    set background=light
+    colorscheme vylight
+    AirlineTheme minimalist
+endfunction
 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=* GRg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview({'dir': s:find_git_root()}), <bang>0)
+function Dark()
+    set background=dark
+    let g:darkspace_italics = 1
+    colorscheme darkspace
+    AirlineTheme darkspace
+endfunction
+
+nmap <leader>ls :call Light()<cr>
+nmap <leader>ds :call Dark()<cr>
+
+command! ProjectFiles execute 'GFiles -c -o' s:find_git_root()
 
 nmap <C-p> :ProjectFiles<cr>
 nmap <leader>toc :GenTocGFM<cr>
 
 set formatoptions=tcroqln
-nnoremap <leader>k :exe 'Ag!' expand('<cword>')<cr>
-cnoreabbre ag Ag
+nnoremap <leader>k :exe 'Grg!' expand('<cword>')<cr>
+
+nnoremap <leader>rg :<C-u>ProjectRootExe Rg<cr>
 
 nnoremap <leader>nb Ofrom nose.tools import set_trace; set_trace()<esc>
 
@@ -716,7 +672,7 @@ nmap <leader>te :terminal<cr>
 
 let g:VimTodoListsDatesEnabled = 1
 
-set regexpengine=1
+set regexpengine=0
 
 " Start ag search from project root
 let g:ag_working_path_mode="r"
@@ -727,9 +683,22 @@ nnoremap <leader>go :Goyo<cr>
 
 let g:airline#extensions#whitespace#enabled=0
 
-nnoremap <leader>nwl :e ~/Notes/worklog.md<cr>:2<cr>:pu=strftime('## %F')<cr>o
-nnoremap <leader>wl :e ~/Notes/worklog.md<cr>:4<cr>
+nnoremap <leader>wl :e ~/Notes/worklog.md<cr>G
 
 source ~/.vimrc-coc
 
 " let g:python3_host_prog = '/Users/chris.linstid/.pyenv/versions/py3nvim/bin/python3'
+
+" let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      " \ 'syntax': 'markdown', 'ext': '.md'}]
+" let g:wiki_root = '~/Notes'
+
+let g:python_host_prog = '/Users/chris.linstid/.pyenv/shims/python2'
+let g:python3_host_prog = '/Users/chris.linstid/.pyenv/shims/python3'
+
+iab <expr> nday strftime("## %F %a\n\n* _%H:%M:%S_")
+iab <expr> nlog strftime("* _%H:%M:%S_")
+
+autocmd BufWritePre *.py execute ':Black'
+
+" set timeoutlen=1000 ttimeoutlen=0
