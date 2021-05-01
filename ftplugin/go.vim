@@ -4,9 +4,15 @@ if exists('b:did_ftplugin')
 endif
 let b:did_ftplugin = 1
 
-" autocmd BufWritePre *.go :GoImports
-nmap <leader>gi :GoImports<cr>
-nmap <leader>gf :GoFmt<cr>
+" From vim-go
+" nmap <leader>gi :GoImports<cr>
+" nmap <leader>gf :GoFmt<cr>
+" nnoremap <leader>gt :GoTest<cr>
+" nnoremap <leader>gr :GoTest<cr>
+" autocmd BufWritePre *.go :silent !goimports -w %
+nnoremap <leader>gi :silent !goimports -w %<cr>
+nnoremap <leader>gf :silent !go fmt %<cr>
+nnoremap <leader>gt :!go test %<cr>
 
 setlocal shiftwidth=4
 setlocal tabstop=4
