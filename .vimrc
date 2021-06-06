@@ -689,14 +689,14 @@ nnoremap <leader>wl :e ~/Notes/worklog.md<cr>G
 
 source ~/.vimrc-coc
 
-" let g:python3_host_prog = '/Users/chris.linstid/.pyenv/versions/py3nvim/bin/python3'
+" let g:python3_host_prog = '$HOME/.pyenv/versions/py3nvim/bin/python3'
 
 " let g:vimwiki_list = [{'path': '~/vimwiki/',
                       " \ 'syntax': 'markdown', 'ext': '.md'}]
 " let g:wiki_root = '~/Notes'
 
-let g:python_host_prog = '/Users/chris.linstid/.pyenv/shims/python2'
-let g:python3_host_prog = '/Users/chris.linstid/.pyenv/shims/python3'
+let g:python_host_prog = '$HOME/.pyenv/shims/python2'
+let g:python3_host_prog = '$HOME/.pyenv/shims/python3'
 
 iab <expr> nday strftime("## %F %a\n\n* _%H:%M:%S_")
 iab <expr> nlog strftime("* _%H:%M:%S_")
