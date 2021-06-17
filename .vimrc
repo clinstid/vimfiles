@@ -309,14 +309,14 @@ if has("gui_running")
     let g:jellybeans_overrides = {
                 \    'background': { 'guibg': '000000' },
                 \}
-    " colorscheme jellybeans
-    " let g:airline_theme='jellybeans'
-    " let g:airline_theme='serene'
+     colorscheme jellybeans
+     let g:airline_theme='jellybeans'
+     let g:airline_theme='serene'
 
     " darkspace
-    let g:darkspace_italics = 1
-    colorscheme darkspace
-    let g:airline_theme='base16'
+    "let g:darkspace_italics = 1
+    "colorscheme darkspace
+    "let g:airline_theme='base16'
 
     " colorscheme base16-black-metal
     " let g:airline_theme='serene'
@@ -328,7 +328,7 @@ if has("gui_running")
     imap <C-S-v> <C-r>+
     vmap <C-S-c> "+y
 else
-    set termguicolors
+    "set termguicolors
     set fillchars="vert:\│"
     " Dark colors
     set background=dark
@@ -342,18 +342,18 @@ else
     " colorscheme PaperColor
 
     " jellybeans settings
-    " let g:jellybeans_overrides = {
-    " \    'background': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
-    " \}
+    let g:jellybeans_overrides = {
+    \    'background': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
+    \}
 
-    " colorscheme jellybeans
-    " let g:airline_theme='jellybeans'
-    " let g:airline_theme='serene'
+    colorscheme jellybeans
+    let g:airline_theme='jellybeans'
+     "let g:airline_theme='serene'
 
     " darkspace
-    let g:darkspace_italics = 1
-    colorscheme darkspace
-    let g:airline_theme='darkspace'
+    "let g:darkspace_italics = 1
+    "colorscheme darkspace
+    "let g:airline_theme='darkspace'
     " let g:lightline.colorscheme = 'darkspace'
 
     " gruvbox overrides
