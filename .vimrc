@@ -165,6 +165,8 @@ Plug 'PProvost/vim-ps1'
 
 " Plug 'wellle/context.vim'
 
+Plug 'rust-lang/rust.vim'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
@@ -310,14 +312,14 @@ if has("gui_running")
     let g:jellybeans_overrides = {
                 \    'background': { 'guibg': '000000' },
                 \}
-    " colorscheme jellybeans
-    " let g:airline_theme='jellybeans'
-    " let g:airline_theme='serene'
+     colorscheme jellybeans
+     let g:airline_theme='jellybeans'
+     let g:airline_theme='serene'
 
     " darkspace
-    let g:darkspace_italics = 1
-    colorscheme darkspace
-    let g:airline_theme='base16'
+    "let g:darkspace_italics = 1
+    "colorscheme darkspace
+    "let g:airline_theme='base16'
 
     " colorscheme base16-black-metal
     " let g:airline_theme='serene'
@@ -329,7 +331,7 @@ if has("gui_running")
     imap <C-S-v> <C-r>+
     vmap <C-S-c> "+y
 else
-    set termguicolors
+    "set termguicolors
     set fillchars="vert:\│"
     " Dark colors
     set background=dark
@@ -343,18 +345,18 @@ else
     " colorscheme PaperColor
 
     " jellybeans settings
-    " let g:jellybeans_overrides = {
-    " \    'background': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
-    " \}
+    let g:jellybeans_overrides = {
+    \    'background': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
+    \}
 
-    " colorscheme jellybeans
-    " let g:airline_theme='jellybeans'
-    " let g:airline_theme='serene'
+    colorscheme jellybeans
+    let g:airline_theme='jellybeans'
+     "let g:airline_theme='serene'
 
     " darkspace
-    let g:darkspace_italics = 1
-    colorscheme darkspace
-    let g:airline_theme='darkspace'
+    "let g:darkspace_italics = 1
+    "colorscheme darkspace
+    "let g:airline_theme='darkspace'
     " let g:lightline.colorscheme = 'darkspace'
 
     " gruvbox overrides
@@ -693,14 +695,14 @@ nnoremap <leader>td :silent grep "\[ \]" %<cr>
 
 source ~/.vimrc-coc
 
-" let g:python3_host_prog = '/Users/chris.linstid/.pyenv/versions/py3nvim/bin/python3'
+" let g:python3_host_prog = '$HOME/.pyenv/versions/py3nvim/bin/python3'
 
 " let g:vimwiki_list = [{'path': '~/vimwiki/',
                       " \ 'syntax': 'markdown', 'ext': '.md'}]
 " let g:wiki_root = '~/Notes'
 
-let g:python_host_prog = '/Users/chris.linstid/.pyenv/shims/python2'
-let g:python3_host_prog = '/Users/chris.linstid/.pyenv/shims/python3'
+let g:python_host_prog = '$HOME/.pyenv/shims/python2'
+let g:python3_host_prog = '$HOME/.pyenv/shims/python3'
 
 autocmd BufWritePre *.py execute ':Black'
 
