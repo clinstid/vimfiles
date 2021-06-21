@@ -138,7 +138,7 @@ Plug 'vim-scripts/haproxy'
 
 " Plug 'junegunn/goyo.vim'
 
-" Plug 'dkarter/bullets.vim'
+Plug 'dkarter/bullets.vim'
 
 " Bazel plugins
 Plug 'google/vim-maktaba'
@@ -159,6 +159,9 @@ Plug 'jvirtanen/vim-hcl'
 Plug 'dbakker/vim-projectroot'
 
 Plug 'preservim/nerdtree'
+
+" powershell
+Plug 'PProvost/vim-ps1'
 
 " Plug 'wellle/context.vim'
 
@@ -515,7 +518,7 @@ set conceallevel=0
 
 " disable folding for markdown files
 let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_auto_insert_bullets = 1
+"let g:vim_markdown_auto_insert_bullets = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_conceal = 0
 
@@ -583,12 +586,6 @@ let g:nv_search_paths = ['~/Notes']
 let g:notes_directories = ['~/.vim-notes']
 let g:notes_conceal_code = 0
 " let g:notes_smart_quotes = 0
-
-nmap <leader>notdone :s/DONE/TODO/<cr>:set nohlsearch<cr>
-nmap <leader>done :s/TODO/DONE/<cr>:set nohlsearch<cr>
-nmap <leader>td o	- TODO
-
-" set synmaxcol=300
 
 set ff=unix
 
@@ -683,7 +680,16 @@ nnoremap <leader>go :Goyo<cr>
 
 let g:airline#extensions#whitespace#enabled=0
 
+" Work log
+func Eatchar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunc
 nnoremap <leader>wl :e ~/Notes/worklog.md<cr>G
+iab nday <C-R>=strftime("## %F %a\n")<cr>
+iab <expr> nlog strftime("_%H:%M:%S_")
+iab newtd [ ]
+nnoremap <leader>td :silent grep "\[ \]" %<cr>
 
 source ~/.vimrc-coc
 
@@ -696,9 +702,22 @@ source ~/.vimrc-coc
 let g:python_host_prog = '/Users/chris.linstid/.pyenv/shims/python2'
 let g:python3_host_prog = '/Users/chris.linstid/.pyenv/shims/python3'
 
-iab <expr> nday strftime("## %F %a\n\n* _%H:%M:%S_")
-iab <expr> nlog strftime("* _%H:%M:%S_")
-
 autocmd BufWritePre *.py execute ':Black'
+
+" bullets configuration
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \]
+let g:bullets_checkbox_markers = ' x'
+let g:bullets_nested_checkboxes = 0
+
+" automatically open quickfix window when we run a command that populates it
+" with something
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]*  cwindow
+    autocmd QuickFixCmdPost l* lwindow
+augroup END
 
 " set timeoutlen=1000 ttimeoutlen=0
