@@ -25,10 +25,12 @@ Plug 'jlanzarotta/bufexplorer'
 
 " color schemes
 Plug 'clinstid/jellybeans.vim'
+Plug 'clinstid/papercolor-theme.vim'
 Plug 'clinstid/vim-darkspace'
 Plug 'clinstid/vylight.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasiser/vim-code-dark'
+Plug 'clinstid/everblush.vim'
 
 " markdown support
 Plug 'godlygeek/tabular'
@@ -167,6 +169,8 @@ Plug 'PProvost/vim-ps1'
 
 Plug 'rust-lang/rust.vim'
 
+Plug 'NoahTheDuke/vim-just'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 
@@ -287,15 +291,15 @@ if has("gui_running")
     endif
     " Dark colors
     set background=dark
-    " let g:PaperColor_Theme_Options = {
-      " \   'theme': {
-      " \     'default': {
-      " \       'transparent_background': 1
-      " \     }
-      " \   }
-      " \ }
-    " colorscheme PaperColor
-    " let g:airline_theme='serene'
+     let g:PaperColor_Theme_Options = {
+       \   'theme': {
+       \     'default': {
+       \       'transparent_background': 1
+       \     }
+       \   }
+       \ }
+     colorscheme PaperColor
+     let g:airline_theme='serene'
 
     " Light colors
     " set background=light
@@ -309,12 +313,12 @@ if has("gui_running")
     " let g:airline_theme='gruvbox'
 
     " jellybeans stuff
-    let g:jellybeans_overrides = {
-                \    'background': { 'guibg': '000000' },
-                \}
-     colorscheme jellybeans
-     let g:airline_theme='jellybeans'
-     let g:airline_theme='serene'
+    "let g:jellybeans_overrides = {
+                "\    'background': { 'guibg': '000000' },
+                "\}
+     "colorscheme jellybeans
+     "let g:airline_theme='jellybeans'
+     "let g:airline_theme='serene'
 
     " darkspace
     "let g:darkspace_italics = 1
@@ -331,27 +335,27 @@ if has("gui_running")
     imap <C-S-v> <C-r>+
     vmap <C-S-c> "+y
 else
-    "set termguicolors
+    set termguicolors
     set fillchars="vert:\│"
     " Dark colors
     set background=dark
-    " let g:PaperColor_Theme_Options = {
-      " \   'theme': {
-      " \     'default': {
-      " \       'transparent_background': 1
-      " \     }
-      " \   }
-      " \ }
-    " colorscheme PaperColor
+    "let g:PaperColor_Theme_Options = {
+    "    \   'theme': {
+    "    \     'default': {
+    "    \       'transparent_background': 1
+    "    \     }
+    "    \   }
+    "    \ }
+    "colorscheme PaperColor
 
     " jellybeans settings
     let g:jellybeans_overrides = {
-    \    'background': { 'ctermbg': 'NONE', '256ctermbg': 'NONE' },
+    \    'background': { 'ctermbg': 'NONE', 'guibg': 'NONE', '256ctermbg': 'NONE' },
     \}
 
     colorscheme jellybeans
     let g:airline_theme='jellybeans'
-     "let g:airline_theme='serene'
+    " let g:airline_theme='serene'
 
     " darkspace
     "let g:darkspace_italics = 1
