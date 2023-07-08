@@ -31,6 +31,7 @@ Plug 'clinstid/vylight.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasiser/vim-code-dark'
 Plug 'clinstid/everblush.vim'
+Plug 'vv9k/vim-github-dark'
 
 " markdown support
 Plug 'godlygeek/tabular'
@@ -349,12 +350,15 @@ else
     "colorscheme PaperColor
 
     " jellybeans settings
-    let g:jellybeans_overrides = {
-    \    'background': { 'ctermbg': 'NONE', 'guibg': 'NONE', '256ctermbg': 'NONE' },
-    \}
+    "let g:jellybeans_overrides = {
+    "\    'background': { 'ctermbg': 'NONE', 'guibg': 'NONE', '256ctermbg': 'NONE' },
+    "\}
+    colorscheme ghdark
+    highlight Normal ctermbg=None
+    let g:airline_theme='ghdark'
 
-    colorscheme jellybeans
-    let g:airline_theme='jellybeans'
+    "colorscheme jellybeans
+    "let g:airline_theme='jellybeans'
     " let g:airline_theme='serene'
 
     " darkspace
