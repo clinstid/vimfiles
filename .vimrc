@@ -118,8 +118,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'alok/notational-fzf-vim'
 
-" Plug 'psf/black', { 'branch': 'master' }
-Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'psf/black'
 
 
 " HOCON == typesafe config
